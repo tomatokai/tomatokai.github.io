@@ -335,7 +335,7 @@
 <p>3.进入全局设置固定IP，通常为 56.1</p>
 <p>4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），</p>
 <ol start="5">
-<li>复制 cp enp0s3 enp0s8 继续修改<br>重启网卡</li>
+<li>复制 cp enp0s3 enp0s8 继续修改(需要确定uuid)<br>重启网卡</li>
 </ol>
 <p>6.检查是否可以上网，和主机互相ping</p>
 <p>7.安装ssh</p>
@@ -374,7 +374,15 @@ IPV6_ADDR_GEN_MODE=stable-privacy
 NAME=enp0s8
 UUID=745f8959-57af-4035-87cf-0fdcc4d2e2c2
 DEVICE=enp0s8
-ONBOOT=yes</code></pre>
+ONBOOT=yes</code></pre><h6 id="关于docker-无法运行的姐姐方法"><a href="#关于docker-无法运行的姐姐方法" class="headerlink" title="关于docker 无法运行的姐姐方法"></a>关于docker 无法运行的姐姐方法</h6><blockquote>
+<p>在新的Centos上安装Docker-CE,后运行docker run hello-world报错Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
+</blockquote>
+<pre><code>#解决办法
+$ systemctl daemon-reload
+$ sudo service docker restart
+$ sudo service docker status
+#可以看到状态 运行中 running
+$ sudo docker run hello-world</code></pre>
           
         
       
