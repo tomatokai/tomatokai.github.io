@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="啟動hexo s 後,只同步本地服務,沒有同步到github">
+<meta name="description" content="安裝centosdocker pull centos docker run -d -i -t &amp;lt;imageID&amp;gt; /bin/bash #進入docker內的centos docker attach &amp;lt;ContainerID&amp;gt;訂製自己的centos#安裝ifconfig yum search ifconfig yum install net-tools.x86_64">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo無法同時同步本地4000和github的問題">
-<meta property="og:url" content="http://yoursite.com/2019/06/12/hexo無法同時同步本地4000和github的問題/index.html">
+<meta property="og:title" content="Docker 中安裝centos並且進行ssh">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Docker-上運行centos/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="啟動hexo s 後,只同步本地服務,沒有同步到github">
+<meta property="og:description" content="安裝centosdocker pull centos docker run -d -i -t &amp;lt;imageID&amp;gt; /bin/bash #進入docker內的centos docker attach &amp;lt;ContainerID&amp;gt;訂製自己的centos#安裝ifconfig yum search ifconfig yum install net-tools.x86_64">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-06-12T06:00:34.186Z">
+<meta property="og:updated_time" content="2019-06-21T16:13:35.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo無法同時同步本地4000和github的問題">
-<meta name="twitter:description" content="啟動hexo s 後,只同步本地服務,沒有同步到github">
+<meta name="twitter:title" content="Docker 中安裝centos並且進行ssh">
+<meta name="twitter:description" content="安裝centosdocker pull centos docker run -d -i -t &amp;lt;imageID&amp;gt; /bin/bash #進入docker內的centos docker attach &amp;lt;ContainerID&amp;gt;訂製自己的centos#安裝ifconfig yum search ifconfig yum install net-tools.x86_64">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/12/hexo無法同時同步本地4000和github的問題/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Docker-上運行centos/">
 
 
 
 
 
-  <title>hexo無法同時同步本地4000和github的問題 | Tomatokai</title>
+  <title>Docker 中安裝centos並且進行ssh | Tomatokai</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/hexo無法同時同步本地4000和github的問題/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Docker-上運行centos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tomatokai">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo無法同時同步本地4000和github的問題</h1>
+          <h1 class="post-title" itemprop="name headline">Docker 中安裝centos並且進行ssh</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T13:59:46+08:00">
-                2019-06-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:30:11+08:00">
+                2019-06-21
               </time>
             
 
@@ -319,7 +319,12 @@
       
 
       
-        <h5 id="啟動hexo-s-後-只同步本地服務-沒有同步到github"><a href="#啟動hexo-s-後-只同步本地服務-沒有同步到github" class="headerlink" title="啟動hexo s 後,只同步本地服務,沒有同步到github"></a>啟動hexo s 後,只同步本地服務,沒有同步到github</h5>
+        <h4 id="安裝centos"><a href="#安裝centos" class="headerlink" title="安裝centos"></a>安裝centos</h4><pre><code>docker pull centos
+docker run -d -i -t &lt;imageID&gt; /bin/bash
+#進入docker內的centos
+docker attach &lt;ContainerID&gt;</code></pre><h4 id="訂製自己的centos"><a href="#訂製自己的centos" class="headerlink" title="訂製自己的centos"></a>訂製自己的centos</h4><pre><code>#安裝ifconfig
+yum search ifconfig
+yum install net-tools.x86_64</code></pre>
       
     </div>
     
@@ -465,7 +470,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#啟動hexo-s-後-只同步本地服務-沒有同步到github"><span class="nav-number">1.</span> <span class="nav-text">啟動hexo s 後,只同步本地服務,沒有同步到github</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝centos"><span class="nav-number">1.</span> <span class="nav-text">安裝centos</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#訂製自己的centos"><span class="nav-number">2.</span> <span class="nav-text">訂製自己的centos</span></a></li></ol></div>
             
 
           </div>
