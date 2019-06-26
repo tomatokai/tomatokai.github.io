@@ -249,6 +249,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/好的團隊協作-可以讓工作變成一種樂趣/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/好的團隊協作-可以讓工作變成一種樂趣/" itemprop="url">好的團隊協作,可以讓工作變成一種樂趣</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T22:22:22+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Docker-上運行centos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -392,7 +511,7 @@ yum install net-tools.x86_64</code></pre>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/12/Mac自帶的ssh工具/" itemprop="url">用zsh打造一个mac超好用的terminal</a></h1>
+                <a class="post-title-link" href="/2019/06/12/Mac自帶的ssh工具/" itemprop="url">centos 安裝和配置oh-my-zsh</a></h1>
         
 
         <div class="post-meta">
@@ -445,12 +564,19 @@ yum install net-tools.x86_64</code></pre>
         
           
             <blockquote>
-<p>mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。</p>
+<p>mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。<br>此文是centos的安裝配置</p>
 </blockquote>
-<h4 id="mac自帶ssh功能"><a href="#mac自帶ssh功能" class="headerlink" title="mac自帶ssh功能"></a>mac自帶ssh功能</h4><p>直接採用terminal,然後輸入命令即可</p>
-<pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><p>配合iTerm可以配置快捷启动（暂时未找到不断线的方法）</p>
-<h4 id="安裝iTerm"><a href="#安裝iTerm" class="headerlink" title="安裝iTerm"></a>安裝iTerm</h4><p>按照方法虽处搜索即可下载，此处省略</p>
-<h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh my zsh"></a>centos中安裝和配置 oh my zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5>
+<h4 id="mac自帶ssh命令（純屬備忘）"><a href="#mac自帶ssh命令（純屬備忘）" class="headerlink" title="mac自帶ssh命令（純屬備忘）"></a>mac自帶ssh命令（純屬備忘）</h4><pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh-my-zsh"></a>centos中安裝和配置 oh-my-zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh
+#或者
+yum -y install zsh</code></pre><h5 id="設置zsh為默認的shell"><a href="#設置zsh為默認的shell" class="headerlink" title="設置zsh為默認的shell"></a>設置zsh為默認的shell</h5><pre><code>chsh -s /bin/zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5><pre><code>curl
+sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+
+wget
+sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code></pre><h5 id="配置oh-my-zsh主題"><a href="#配置oh-my-zsh主題" class="headerlink" title="配置oh my zsh主題"></a>配置oh my zsh主題</h5><pre><code>#查看主題
+ls ~/.oh-my-zsh/themes
+#修改主題
+vim ~/.zshrc
+#把ZSH_THEME=&quot;roobbyrussel&quot;改成喜歡的</code></pre>
           
         
       
@@ -988,7 +1114,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
