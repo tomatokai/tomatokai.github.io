@@ -249,6 +249,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/centos7-搭建自己的ngrok服務/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/28/centos7-搭建自己的ngrok服務/" itemprop="url">centos7 搭建自己的ngrok服務</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-28T11:06:26+08:00">
+                2019-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-前提準備"><a href="#1-前提準備" class="headerlink" title="1.前提準備"></a>1.前提準備</h4><p>需要一台有域名解析的雲服務器,此處用的是centos7系統</p>
+<h4 id="2-安裝基礎環境"><a href="#2-安裝基礎環境" class="headerlink" title="2.安裝基礎環境"></a>2.安裝基礎環境</h4><p>安裝git和gcc（用於下載ngrok源代碼）<br>    yum install gcc -y<br>    yum install git -y</p>
+<h4 id="3-安裝go語言環境"><a href="#3-安裝go語言環境" class="headerlink" title="3.安裝go語言環境"></a>3.安裝go語言環境</h4><pre><code>yum install -y mercurial git bzr subversion golang golang-pkg-windows-amd64 golang-pkg-windows-386</code></pre><h4 id="4-檢查環境是否安裝好"><a href="#4-檢查環境是否安裝好" class="headerlink" title="4.檢查環境是否安裝好"></a>4.檢查環境是否安裝好</h4><pre><code>git --version
+go version</code></pre><h4 id="5-在雲服務器搭建ngrok服務"><a href="#5-在雲服務器搭建ngrok服務" class="headerlink" title="5.在雲服務器搭建ngrok服務"></a>5.在雲服務器搭建ngrok服務</h4><h5 id="下載ngork源代碼"><a href="#下載ngork源代碼" class="headerlink" title="下載ngork源代碼"></a>下載ngork源代碼</h5><pre><code>git clone https://github.com/inconshreveable/ngrok.git</code></pre><h5 id="生成證書"><a href="#生成證書" class="headerlink" title="生成證書"></a>生成證書</h5><pre><code>cd ngrok
+#把coodata.cn改為自己的域名
+export NGROK_DOMAIN=&quot;coodata.cn&quot;
+openssl genrsa -out rootCA.key 2048
+openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -days 5000 -out rootCA.pem
+openssl genrsa -out device.key 2048
+openssl req -new -key device.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -out device.csr
+openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</code></pre><h5 id="替換新生成的證書，執行下面命令後輸入’y’-回車"><a href="#替換新生成的證書，執行下面命令後輸入’y’-回車" class="headerlink" title="替換新生成的證書，執行下面命令後輸入’y’ 回車"></a>替換新生成的證書，執行下面命令後輸入’y’ 回車</h5><pre><code>cp rootCA.pem assets/client/tls/ngrokroot.crt
+
+cp device.crt assets/server/tls/snakeoil.crt
+
+cp device.key assets/server/tls/snakeoil.key</code></pre><h4 id="6-編譯生成ngrokd（服務端）"><a href="#6-編譯生成ngrokd（服務端）" class="headerlink" title="6.編譯生成ngrokd（服務端）"></a>6.編譯生成ngrokd（服務端）</h4><pre><code>#輸入後需要等待一段時間
+GOOS=linux GOARCH=amd64 make release-server
+#生成在 ~/ngrok/bin/目錄中</code></pre><h4 id="7-編譯生成ngrok-客戶端"><a href="#7-編譯生成ngrok-客戶端" class="headerlink" title="7.編譯生成ngrok(客戶端)"></a>7.編譯生成ngrok(客戶端)</h4><pre><code>#還是在ngrok這個目錄，輸入以下命令，然後等待完成
+GOOS=windows GOARCH=amd64 make release-client
+#生成的目錄在 ~/ngrok/bin/windows_amd64目錄中</code></pre><h4 id="8-用SSH-Secure-Shell-Client工具-或scp等"><a href="#8-用SSH-Secure-Shell-Client工具-或scp等" class="headerlink" title="8.用SSH Secure Shell Client工具(或scp等)"></a>8.用SSH Secure Shell Client工具(或scp等)</h4><h5 id="windows下載"><a href="#windows下載" class="headerlink" title="windows下載"></a>windows下載</h5><p>將~/ngrok/bin/windows_amd64/中的文件下載到本地windows下，如D:\ngrok</p>
+<h5 id="mac下載"><a href="#mac下載" class="headerlink" title="mac下載"></a>mac下載</h5><pre><code>#由於文件不大,用了scp,如果說找不到文件位置，把後面的～去掉即可
+scp root@192.168.3.121:~/ngrok/bin/windwos_amd64/   ngrok.exe ~/User/用戶名/ngrok.exe</code></pre><blockquote>
+<p><a href="https://hacpai.com/article/1503591686583" target="_blank" rel="noopener">spc語法</a><br>也可以使用iTerm 配置更加方便下載</p>
+</blockquote>
+<h4 id="9-在D-ngrok中新建文件，改名為ngrok-cfg"><a href="#9-在D-ngrok中新建文件，改名為ngrok-cfg" class="headerlink" title="9.在D:/ngrok中新建文件，改名為ngrok.cfg"></a>9.在D:/ngrok中新建文件，改名為ngrok.cfg</h4><pre><code>server_addr: &quot;coodata.cn:8083&quot;
+trust_host_root_certs: false
+tunnels:
+    http:
+        subdomain: &quot;www&quot;
+        proto:
+            http: &quot;80&quot;
+
+    https:
+        subdomain: &quot;www&quot;
+        proto:
+            https: &quot;443&quot;
+
+    ssh:
+        remote_port: 2222
+        proto:
+            tcp: &quot;22&quot;
+
+    mstsc:
+            remote_port: 52222      
+            proto:
+            tcp: &quot;192.168.0.107:3389&quot;</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/好的團隊協作-可以讓工作變成一種樂趣/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,7 +1277,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
