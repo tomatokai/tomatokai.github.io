@@ -364,7 +364,14 @@ tunnels:
     mstsc:
             remote_port: 52222      
             proto:
-            tcp: &quot;192.168.0.107:3389&quot;</code></pre>
+            tcp: &quot;192.168.0.107:3389&quot;</code></pre><h4 id="10-開啟遠程服務"><a href="#10-開啟遠程服務" class="headerlink" title="10.開啟遠程服務"></a>10.開啟遠程服務</h4><pre><code>#如果開啟不了，很可能是和nginx衝突了，關閉掉即可
+cd ngrok
+sudo ./bin/ngrokd -domain=&quot;coodata.cn&quot;  -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:443&quot; -tunnelAddr=&quot;:8083&quot; &amp;</code></pre><p>然後會顯示如下：</p>
+<pre><code>[13:53:46 CST 2019/06/28] [INFO] (ngrok/log.        (*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}
+[13:54:16 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}
+[13:54:46 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><p>在windows中 D:\ngrok新建文件 改名 start.bat<br>輸入：</p>
+<pre><code>ngrok -config=ngrok.cfg start http https ssh mstsc</code></pre><p>直接雙擊運行,如果彈出 online的狀態，則表示運行成功。</p>
+
           
         
       
