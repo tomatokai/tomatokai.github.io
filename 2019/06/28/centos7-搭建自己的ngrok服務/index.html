@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="1.前提準備需要一台有域名解析的雲服務器,此處用的是centos7系統 2.安裝基礎環境安裝git和gcc（用於下載ngrok源代碼）    yum install gcc -y    yum install git -y 3.安裝go語言環境yum install -y mercurial git bzr subversion golang golang-pkg-windows-amd64 go">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-06-28T06:05:08.527Z">
+<meta property="og:updated_time" content="2019-06-28T06:28:10.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 搭建自己的ngrok服務">
 <meta name="twitter:description" content="1.前提準備需要一台有域名解析的雲服務器,此處用的是centos7系統 2.安裝基礎環境安裝git和gcc（用於下載ngrok源代碼）    yum install gcc -y    yum install git -y 3.安裝go語言環境yum install -y mercurial git bzr subversion golang golang-pkg-windows-amd64 go">
@@ -370,7 +370,8 @@ sudo ./bin/ngrokd -domain=&quot;coodata.cn&quot;  -httpAddr=&quot;:80&quot; -htt
 [13:54:16 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}
 [13:54:46 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><p>在windows中 D:\ngrok新建文件 改名 start.bat<br>輸入：</p>
 <pre><code>ngrok -config=ngrok.cfg start http https ssh mstsc</code></pre><p>直接雙擊運行,如果彈出 online的狀態，則表示運行成功。</p>
-
+<pre><code>#或者cd到目錄後
+ngrok.exe -config ngrok.cfg start http https ssh</code></pre>
       
     </div>
     
