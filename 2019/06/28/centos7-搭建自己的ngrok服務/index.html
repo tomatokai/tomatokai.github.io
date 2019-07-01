@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="此方法到最後一步出現無法連上,暫時還未找到原因,git的版本是1.7，後面嘗試用2.x版本看看  1.前提準備需要一台有域名解析的雲服務器,此處用的是centos7系統 2.安裝基礎環境安裝git和gcc（用於下載ngrok源代碼）    yum install gcc -y    yum install git -y 3.安裝go語言環境yum install -y mercurial git">
+<meta name="description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos7 搭建自己的ngrok服務">
 <meta property="og:url" content="http://yoursite.com/2019/06/28/centos7-搭建自己的ngrok服務/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="此方法到最後一步出現無法連上,暫時還未找到原因,git的版本是1.7，後面嘗試用2.x版本看看  1.前提準備需要一台有域名解析的雲服務器,此處用的是centos7系統 2.安裝基礎環境安裝git和gcc（用於下載ngrok源代碼）    yum install gcc -y    yum install git -y 3.安裝go語言環境yum install -y mercurial git">
+<meta property="og:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-06-28T15:43:47.242Z">
+<meta property="og:updated_time" content="2019-07-01T08:19:05.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 搭建自己的ngrok服務">
-<meta name="twitter:description" content="此方法到最後一步出現無法連上,暫時還未找到原因,git的版本是1.7，後面嘗試用2.x版本看看  1.前提準備需要一台有域名解析的雲服務器,此處用的是centos7系統 2.安裝基礎環境安裝git和gcc（用於下載ngrok源代碼）    yum install gcc -y    yum install git -y 3.安裝go語言環境yum install -y mercurial git">
+<meta name="twitter:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
 
 
 
@@ -320,18 +320,23 @@
 
       
         <blockquote>
-<p>此方法到最後一步出現無法連上,暫時還未找到原因,git的版本是1.7，後面嘗試用2.x版本看看</p>
+<p>可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：</p>
+</blockquote>
+<pre><code>bin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot;
+#-domain后面你上面写的域名  -httpAddr http端口  -httpsAddr https 端口 
+#-tunnerlAddr 客户端端口，连接端口</code></pre><blockquote>
+<p>客户端的接口要4443,之前就是弄错了接口，导致reconneting,另外也需要在安全组里面把对应的端口打开，还有在防火墙里开发对应的端口</p>
 </blockquote>
 <h4 id="1-前提準備"><a href="#1-前提準備" class="headerlink" title="1.前提準備"></a>1.前提準備</h4><p>需要一台有域名解析的雲服務器,此處用的是centos7系統</p>
 <h4 id="2-安裝基礎環境"><a href="#2-安裝基礎環境" class="headerlink" title="2.安裝基礎環境"></a>2.安裝基礎環境</h4><p>安裝git和gcc（用於下載ngrok源代碼）<br>    yum install gcc -y<br>    yum install git -y</p>
 <h4 id="3-安裝go語言環境"><a href="#3-安裝go語言環境" class="headerlink" title="3.安裝go語言環境"></a>3.安裝go語言環境</h4><pre><code>yum install -y mercurial git bzr subversion golang golang-pkg-windows-amd64 golang-pkg-windows-386</code></pre><h4 id="4-檢查環境是否安裝好"><a href="#4-檢查環境是否安裝好" class="headerlink" title="4.檢查環境是否安裝好"></a>4.檢查環境是否安裝好</h4><pre><code>git --version
 go version</code></pre><h4 id="5-在雲服務器搭建ngrok服務"><a href="#5-在雲服務器搭建ngrok服務" class="headerlink" title="5.在雲服務器搭建ngrok服務"></a>5.在雲服務器搭建ngrok服務</h4><h5 id="下載ngork源代碼"><a href="#下載ngork源代碼" class="headerlink" title="下載ngork源代碼"></a>下載ngork源代碼</h5><pre><code>git clone https://github.com/inconshreveable/ngrok.git</code></pre><h5 id="生成證書"><a href="#生成證書" class="headerlink" title="生成證書"></a>生成證書</h5><pre><code>cd ngrok
 #把coodata.cn改為自己的域名
-export NGROK_DOMAIN=&quot;coodata.cn&quot;
+export NGROK_DOMAIN=&quot;ngrok.coodata.cn&quot;
 openssl genrsa -out rootCA.key 2048
-openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -days 5000 -out rootCA.pem
+openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=ngrok.coodata.cn&quot; -days 5000 -out rootCA.pem
 openssl genrsa -out device.key 2048
-openssl req -new -key device.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -out device.csr
+openssl req -new -key device.key -subj &quot;/CN=ngrok.coodata.cn&quot; -out device.csr
 openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</code></pre><h5 id="替換新生成的證書，執行下面命令後輸入’y’-回車"><a href="#替換新生成的證書，執行下面命令後輸入’y’-回車" class="headerlink" title="替換新生成的證書，執行下面命令後輸入’y’ 回車"></a>替換新生成的證書，執行下面命令後輸入’y’ 回車</h5><pre><code>cp rootCA.pem assets/client/tls/ngrokroot.crt
 
 cp device.crt assets/server/tls/snakeoil.crt
@@ -345,7 +350,7 @@ GOOS=windows GOARCH=amd64 make release-client
 scp root@192.168.3.121:~/ngrok/bin/windwos_amd64/   ngrok.exe ~/User/用戶名/ngrok.exe</code></pre><blockquote>
 <p><a href="https://hacpai.com/article/1503591686583" target="_blank" rel="noopener">spc語法</a><br>也可以使用iTerm 配置更加方便下載</p>
 </blockquote>
-<h4 id="9-在D-ngrok中新建文件，改名為ngrok-cfg"><a href="#9-在D-ngrok中新建文件，改名為ngrok-cfg" class="headerlink" title="9.在D:/ngrok中新建文件，改名為ngrok.cfg"></a>9.在D:/ngrok中新建文件，改名為ngrok.cfg</h4><pre><code>server_addr: &quot;coodata.cn:8083&quot;
+<h4 id="9-在D-ngrok中新建文件，改名為ngrok-cfg"><a href="#9-在D-ngrok中新建文件，改名為ngrok-cfg" class="headerlink" title="9.在D:/ngrok中新建文件，改名為ngrok.cfg"></a>9.在D:/ngrok中新建文件，改名為ngrok.cfg</h4><pre><code>server_addr: &quot;ngrok.coodata.cn:4443&quot;
 trust_host_root_certs: false
 tunnels:
     http:
@@ -368,7 +373,7 @@ tunnels:
             proto:
             tcp: &quot;192.168.0.107:3389&quot;</code></pre><h4 id="10-開啟遠程服務"><a href="#10-開啟遠程服務" class="headerlink" title="10.開啟遠程服務"></a>10.開啟遠程服務</h4><pre><code>#如果開啟不了，很可能是和nginx衝突了，關閉掉即可
 cd ngrok
-sudo ./bin/ngrokd -domain=&quot;coodata.cn&quot;  -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:443&quot; -tunnelAddr=&quot;:8083&quot; &amp;</code></pre><p>然後會顯示如下：</p>
+sbin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot; &amp;</code></pre><p>然後會顯示如下：</p>
 <pre><code>[13:53:46 CST 2019/06/28] [INFO] (ngrok/log.        (*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}
 [13:54:16 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}
 [13:54:46 CST 2019/06/28] [INFO] (ngrok/log.(*PrefixLogger).Info:83) [metrics] Reporting: {&quot;bytesIn.count&quot;:0,&quot;bytesOut.count&quot;:0,&quot;connMeter.count&quot;:0,&quot;connMeter.m1&quot;:0,&quot;httpTunnelMeter.count&quot;:0,&quot;linux&quot;:0,&quot;osx&quot;:0,&quot;other&quot;:0,&quot;tcpTunnelMeter.count&quot;:0,&quot;tunnelMeter.count&quot;:0,&quot;tunnelMeter.m1&quot;:0,&quot;windows&quot;:0}</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><p>在windows中 D:\ngrok新建文件 改名 start.bat<br>輸入：</p>
