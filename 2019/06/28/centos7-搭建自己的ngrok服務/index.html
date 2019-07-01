@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-01T08:30:03.296Z">
+<meta property="og:updated_time" content="2019-07-01T08:48:34.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 搭建自己的ngrok服務">
 <meta name="twitter:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
@@ -373,9 +373,8 @@ tunnels:
             proto:
             tcp: &quot;192.168.0.107:3389&quot;</code></pre><h4 id="10-開啟遠程服務"><a href="#10-開啟遠程服務" class="headerlink" title="10.開啟遠程服務"></a>10.開啟遠程服務</h4><pre><code>#如果開啟不了，很可能是和nginx衝突了，關閉掉即可
 cd ngrok
-sbin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot; &amp;</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><h5 id="windows-启动"><a href="#windows-启动" class="headerlink" title="windows 启动"></a>windows 启动</h5><pre><code>#cd到目錄後
-ngrok.exe -config ngrok.cfg start 3000
-#如果online，则成功，如果出现reconnecting的问题，多数是接口不对，或者安全组和防火墙</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=kaiye 3000</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
+sbin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot; &amp;</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><h5 id="windows-启动"><a href="#windows-启动" class="headerlink" title="windows 启动"></a>windows 启动</h5><pre><code>#cd到目錄後,如果online，则成功，如果出现reconnecting的问题，多数是接口不对，或者安全组和防火墙
+ngrok.exe -config ngrok.cfg -subdmain test 3000</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=kaiye 3000</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
 <pre><code>docker run -idt \
 --restart always \
 --name ngrok-server \
