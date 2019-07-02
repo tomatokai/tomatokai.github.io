@@ -249,6 +249,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/通过Docker搭建ngrok实现内网穿透/" itemprop="url">通过Docker搭建ngrok实现内网穿透</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T10:16:08+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優</p>
+</blockquote>
+<h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
+<pre><code>docker run -idt \
+--restart always \
+--name ngrok-server \
+-p 8880:80 \
+-p 8443:443 \
+-p 4443:4443 \
+-v /data/ngrok:/myfiles \
+-e DOMAIN=&apos;tunnel.coodata.cn&apos; \
+hteen/ngrok /bin/sh /server.sh</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/centos7-搭建自己的ngrok服務/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -344,9 +475,10 @@ cp device.crt assets/server/tls/snakeoil.crt
 
 cp device.key assets/server/tls/snakeoil.key</code></pre><h4 id="6-編譯生成ngrokd（服務端）"><a href="#6-編譯生成ngrokd（服務端）" class="headerlink" title="6.編譯生成ngrokd（服務端）"></a>6.編譯生成ngrokd（服務端）</h4><pre><code>#輸入後需要等待一段時間
 GOOS=linux GOARCH=amd64 make release-server
-#生成在 ~/ngrok/bin/目錄中</code></pre><h4 id="7-編譯生成ngrok-客戶端"><a href="#7-編譯生成ngrok-客戶端" class="headerlink" title="7.編譯生成ngrok(客戶端)"></a>7.編譯生成ngrok(客戶端)</h4><pre><code>#還是在ngrok這個目錄，輸入以下命令，然後等待完成
+#生成在 ~/ngrok/bin/目錄中</code></pre><h4 id="7-編譯生成ngrok-客戶端"><a href="#7-編譯生成ngrok-客戶端" class="headerlink" title="7.編譯生成ngrok(客戶端)"></a>7.編譯生成ngrok(客戶端)</h4><h5 id="windows客户端"><a href="#windows客户端" class="headerlink" title="windows客户端"></a>windows客户端</h5><pre><code>#還是在ngrok這個目錄，輸入以下命令，然後等待完成
 GOOS=windows GOARCH=amd64 make release-client
-#生成的目錄在 ~/ngrok/bin/windows_amd64目錄中</code></pre><h4 id="8-用SSH-Secure-Shell-Client工具-或scp等"><a href="#8-用SSH-Secure-Shell-Client工具-或scp等" class="headerlink" title="8.用SSH Secure Shell Client工具(或scp等)"></a>8.用SSH Secure Shell Client工具(或scp等)</h4><h5 id="windows下載"><a href="#windows下載" class="headerlink" title="windows下載"></a>windows下載</h5><p>將~/ngrok/bin/windows_amd64/中的文件下載到本地windows下，如D:\ngrok</p>
+#生成的目錄在 ~/ngrok/bin/windows_amd64目錄中</code></pre><h5 id="mac客户端"><a href="#mac客户端" class="headerlink" title="mac客户端"></a>mac客户端</h5><pre><code>GOOS=darwin GOARCH=amd64 make release-server release-client</code></pre><h5 id="linux客户端"><a href="#linux客户端" class="headerlink" title="linux客户端"></a>linux客户端</h5><pre><code>GOOS=linux GOARCH=amd64 make release-server release-client
+#如果无效，可能是环境配置问题，centos系统可以用一开始生成的ngrok做客户端</code></pre><h4 id="8-用SSH-Secure-Shell-Client工具-或scp等"><a href="#8-用SSH-Secure-Shell-Client工具-或scp等" class="headerlink" title="8.用SSH Secure Shell Client工具(或scp等)"></a>8.用SSH Secure Shell Client工具(或scp等)</h4><h5 id="windows下載"><a href="#windows下載" class="headerlink" title="windows下載"></a>windows下載</h5><p>將~/ngrok/bin/windows_amd64/中的文件下載到本地windows下，如D:\ngrok</p>
 <h5 id="mac下載"><a href="#mac下載" class="headerlink" title="mac下載"></a>mac下載</h5><pre><code>#由於文件不大,用了scp,如果說找不到文件位置，把後面的～去掉即可
 scp root@192.168.3.121:~/ngrok/bin/windwos_amd64/   ngrok.exe ~/User/用戶名/ngrok.exe</code></pre><blockquote>
 <p><a href="https://hacpai.com/article/1503591686583" target="_blank" rel="noopener">spc語法</a><br>也可以使用iTerm 配置更加方便下載</p>
@@ -375,16 +507,7 @@ tunnels:
             tcp: &quot;192.168.0.107:3389&quot;</code></pre><h4 id="10-開啟遠程服務"><a href="#10-開啟遠程服務" class="headerlink" title="10.開啟遠程服務"></a>10.開啟遠程服務</h4><pre><code>#如果開啟不了，很可能是和nginx衝突了，關閉掉即可
 cd ngrok
 sbin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot; &amp;</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><h5 id="windows-启动"><a href="#windows-启动" class="headerlink" title="windows 启动"></a>windows 启动</h5><pre><code>#cd到目錄後,如果online，则成功，如果出现reconnecting的问题，多数是接口不对，或者安全组和防火墙
-ngrok.exe -config ngrok.cfg -subdmain test 3000</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=kaiye 3000</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
-<pre><code>docker run -idt \
---restart always \
---name ngrok-server \
--p 8880:80 \
--p 8443:443 \
--p 4443:4443 \
--v /data/ngrok:/myfiles \
--e DOMAIN=&apos;tunnel.coodata.cn&apos; \
-hteen/ngrok /bin/sh /server.sh</code></pre>
+ngrok.exe -config ngrok.cfg -subdmain test 3000</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=webname 3000</code></pre>
           
         
       
@@ -1297,7 +1420,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

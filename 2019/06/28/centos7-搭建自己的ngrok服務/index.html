@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-01T08:48:34.332Z">
+<meta property="og:updated_time" content="2019-07-02T02:18:40.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 搭建自己的ngrok服務">
 <meta name="twitter:description" content="可以顺利链接上了，细节问题在于启动服务器的时候的链接点，正确的服务端命令为：  bin/ngrokd -domain=&amp;quot;ngrok.coodata.cn&amp;quot; -httpAddr=&amp;quot;:80&amp;quot; -httpsAddr=&amp;quot;:8081&amp;quot; -tunnelAddr=&amp;quot;:4443&amp;quot; #-domain后面你上面写的域名  -httpAd">
@@ -343,9 +343,10 @@ cp device.crt assets/server/tls/snakeoil.crt
 
 cp device.key assets/server/tls/snakeoil.key</code></pre><h4 id="6-編譯生成ngrokd（服務端）"><a href="#6-編譯生成ngrokd（服務端）" class="headerlink" title="6.編譯生成ngrokd（服務端）"></a>6.編譯生成ngrokd（服務端）</h4><pre><code>#輸入後需要等待一段時間
 GOOS=linux GOARCH=amd64 make release-server
-#生成在 ~/ngrok/bin/目錄中</code></pre><h4 id="7-編譯生成ngrok-客戶端"><a href="#7-編譯生成ngrok-客戶端" class="headerlink" title="7.編譯生成ngrok(客戶端)"></a>7.編譯生成ngrok(客戶端)</h4><pre><code>#還是在ngrok這個目錄，輸入以下命令，然後等待完成
+#生成在 ~/ngrok/bin/目錄中</code></pre><h4 id="7-編譯生成ngrok-客戶端"><a href="#7-編譯生成ngrok-客戶端" class="headerlink" title="7.編譯生成ngrok(客戶端)"></a>7.編譯生成ngrok(客戶端)</h4><h5 id="windows客户端"><a href="#windows客户端" class="headerlink" title="windows客户端"></a>windows客户端</h5><pre><code>#還是在ngrok這個目錄，輸入以下命令，然後等待完成
 GOOS=windows GOARCH=amd64 make release-client
-#生成的目錄在 ~/ngrok/bin/windows_amd64目錄中</code></pre><h4 id="8-用SSH-Secure-Shell-Client工具-或scp等"><a href="#8-用SSH-Secure-Shell-Client工具-或scp等" class="headerlink" title="8.用SSH Secure Shell Client工具(或scp等)"></a>8.用SSH Secure Shell Client工具(或scp等)</h4><h5 id="windows下載"><a href="#windows下載" class="headerlink" title="windows下載"></a>windows下載</h5><p>將~/ngrok/bin/windows_amd64/中的文件下載到本地windows下，如D:\ngrok</p>
+#生成的目錄在 ~/ngrok/bin/windows_amd64目錄中</code></pre><h5 id="mac客户端"><a href="#mac客户端" class="headerlink" title="mac客户端"></a>mac客户端</h5><pre><code>GOOS=darwin GOARCH=amd64 make release-server release-client</code></pre><h5 id="linux客户端"><a href="#linux客户端" class="headerlink" title="linux客户端"></a>linux客户端</h5><pre><code>GOOS=linux GOARCH=amd64 make release-server release-client
+#如果无效，可能是环境配置问题，centos系统可以用一开始生成的ngrok做客户端</code></pre><h4 id="8-用SSH-Secure-Shell-Client工具-或scp等"><a href="#8-用SSH-Secure-Shell-Client工具-或scp等" class="headerlink" title="8.用SSH Secure Shell Client工具(或scp等)"></a>8.用SSH Secure Shell Client工具(或scp等)</h4><h5 id="windows下載"><a href="#windows下載" class="headerlink" title="windows下載"></a>windows下載</h5><p>將~/ngrok/bin/windows_amd64/中的文件下載到本地windows下，如D:\ngrok</p>
 <h5 id="mac下載"><a href="#mac下載" class="headerlink" title="mac下載"></a>mac下載</h5><pre><code>#由於文件不大,用了scp,如果說找不到文件位置，把後面的～去掉即可
 scp root@192.168.3.121:~/ngrok/bin/windwos_amd64/   ngrok.exe ~/User/用戶名/ngrok.exe</code></pre><blockquote>
 <p><a href="https://hacpai.com/article/1503591686583" target="_blank" rel="noopener">spc語法</a><br>也可以使用iTerm 配置更加方便下載</p>
@@ -374,16 +375,7 @@ tunnels:
             tcp: &quot;192.168.0.107:3389&quot;</code></pre><h4 id="10-開啟遠程服務"><a href="#10-開啟遠程服務" class="headerlink" title="10.開啟遠程服務"></a>10.開啟遠程服務</h4><pre><code>#如果開啟不了，很可能是和nginx衝突了，關閉掉即可
 cd ngrok
 sbin/ngrokd -domain=&quot;ngrok.coodata.cn&quot; -httpAddr=&quot;:80&quot; -httpsAddr=&quot;:8081&quot; -tunnelAddr=&quot;:4443&quot; &amp;</code></pre><h4 id="11-開啟客戶機服務"><a href="#11-開啟客戶機服務" class="headerlink" title="11.開啟客戶機服務"></a>11.開啟客戶機服務</h4><h5 id="windows-启动"><a href="#windows-启动" class="headerlink" title="windows 启动"></a>windows 启动</h5><pre><code>#cd到目錄後,如果online，则成功，如果出现reconnecting的问题，多数是接口不对，或者安全组和防火墙
-ngrok.exe -config ngrok.cfg -subdmain test 3000</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=kaiye 3000</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
-<pre><code>docker run -idt \
---restart always \
---name ngrok-server \
--p 8880:80 \
--p 8443:443 \
--p 4443:4443 \
--v /data/ngrok:/myfiles \
--e DOMAIN=&apos;tunnel.coodata.cn&apos; \
-hteen/ngrok /bin/sh /server.sh</code></pre>
+ngrok.exe -config ngrok.cfg -subdmain test 3000</code></pre><h5 id="mac启动"><a href="#mac启动" class="headerlink" title="mac启动"></a>mac启动</h5><pre><code>./ngrok -config=ngrok.cfg -subdomain=webname 3000</code></pre>
       
     </div>
     
@@ -416,6 +408,10 @@ hteen/ngrok /bin/sh /server.sh</code></pre>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/02/通过Docker搭建ngrok实现内网穿透/" rel="prev" title="通过Docker搭建ngrok实现内网穿透">
+                通过Docker搭建ngrok实现内网穿透 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +488,7 @@ hteen/ngrok /bin/sh /server.sh</code></pre>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -529,7 +525,7 @@ hteen/ngrok /bin/sh /server.sh</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-前提準備"><span class="nav-number">1.</span> <span class="nav-text">1.前提準備</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安裝基礎環境"><span class="nav-number">2.</span> <span class="nav-text">2.安裝基礎環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安裝go語言環境"><span class="nav-number">3.</span> <span class="nav-text">3.安裝go語言環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-檢查環境是否安裝好"><span class="nav-number">4.</span> <span class="nav-text">4.檢查環境是否安裝好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-在雲服務器搭建ngrok服務"><span class="nav-number">5.</span> <span class="nav-text">5.在雲服務器搭建ngrok服務</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下載ngork源代碼"><span class="nav-number">5.1.</span> <span class="nav-text">下載ngork源代碼</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成證書"><span class="nav-number">5.2.</span> <span class="nav-text">生成證書</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替換新生成的證書，執行下面命令後輸入’y’-回車"><span class="nav-number">5.3.</span> <span class="nav-text">替換新生成的證書，執行下面命令後輸入’y’ 回車</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-編譯生成ngrokd（服務端）"><span class="nav-number">6.</span> <span class="nav-text">6.編譯生成ngrokd（服務端）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-編譯生成ngrok-客戶端"><span class="nav-number">7.</span> <span class="nav-text">7.編譯生成ngrok(客戶端)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-用SSH-Secure-Shell-Client工具-或scp等"><span class="nav-number">8.</span> <span class="nav-text">8.用SSH Secure Shell Client工具(或scp等)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows下載"><span class="nav-number">8.1.</span> <span class="nav-text">windows下載</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac下載"><span class="nav-number">8.2.</span> <span class="nav-text">mac下載</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-在D-ngrok中新建文件，改名為ngrok-cfg"><span class="nav-number">9.</span> <span class="nav-text">9.在D:/ngrok中新建文件，改名為ngrok.cfg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-開啟遠程服務"><span class="nav-number">10.</span> <span class="nav-text">10.開啟遠程服務</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-開啟客戶機服務"><span class="nav-number">11.</span> <span class="nav-text">11.開啟客戶機服務</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows-启动"><span class="nav-number">11.1.</span> <span class="nav-text">windows 启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac启动"><span class="nav-number">11.2.</span> <span class="nav-text">mac启动</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number"></span> <span class="nav-text">採用Docker + ngrok</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-前提準備"><span class="nav-number">1.</span> <span class="nav-text">1.前提準備</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安裝基礎環境"><span class="nav-number">2.</span> <span class="nav-text">2.安裝基礎環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安裝go語言環境"><span class="nav-number">3.</span> <span class="nav-text">3.安裝go語言環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-檢查環境是否安裝好"><span class="nav-number">4.</span> <span class="nav-text">4.檢查環境是否安裝好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-在雲服務器搭建ngrok服務"><span class="nav-number">5.</span> <span class="nav-text">5.在雲服務器搭建ngrok服務</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下載ngork源代碼"><span class="nav-number">5.1.</span> <span class="nav-text">下載ngork源代碼</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成證書"><span class="nav-number">5.2.</span> <span class="nav-text">生成證書</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替換新生成的證書，執行下面命令後輸入’y’-回車"><span class="nav-number">5.3.</span> <span class="nav-text">替換新生成的證書，執行下面命令後輸入’y’ 回車</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-編譯生成ngrokd（服務端）"><span class="nav-number">6.</span> <span class="nav-text">6.編譯生成ngrokd（服務端）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-編譯生成ngrok-客戶端"><span class="nav-number">7.</span> <span class="nav-text">7.編譯生成ngrok(客戶端)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows客户端"><span class="nav-number">7.1.</span> <span class="nav-text">windows客户端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac客户端"><span class="nav-number">7.2.</span> <span class="nav-text">mac客户端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux客户端"><span class="nav-number">7.3.</span> <span class="nav-text">linux客户端</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-用SSH-Secure-Shell-Client工具-或scp等"><span class="nav-number">8.</span> <span class="nav-text">8.用SSH Secure Shell Client工具(或scp等)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows下載"><span class="nav-number">8.1.</span> <span class="nav-text">windows下載</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac下載"><span class="nav-number">8.2.</span> <span class="nav-text">mac下載</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-在D-ngrok中新建文件，改名為ngrok-cfg"><span class="nav-number">9.</span> <span class="nav-text">9.在D:/ngrok中新建文件，改名為ngrok.cfg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-開啟遠程服務"><span class="nav-number">10.</span> <span class="nav-text">10.開啟遠程服務</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-開啟客戶機服務"><span class="nav-number">11.</span> <span class="nav-text">11.開啟客戶機服務</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows-启动"><span class="nav-number">11.1.</span> <span class="nav-text">windows 启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac启动"><span class="nav-number">11.2.</span> <span class="nav-text">mac启动</span></a></li></ol></li></ol></div>
             
 
           </div>
