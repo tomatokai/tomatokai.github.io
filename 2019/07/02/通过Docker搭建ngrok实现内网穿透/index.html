@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --restart always \ --name ngrok-server \ -p 8880:80 \ -p 8443:443 \ -p 44">
+<meta name="description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Docker搭建ngrok实现内网穿透">
 <meta property="og:url" content="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --restart always \ --name ngrok-server \ -p 8880:80 \ -p 8443:443 \ -p 44">
+<meta property="og:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-02T02:18:29.500Z">
+<meta property="og:updated_time" content="2019-07-02T02:47:42.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Docker搭建ngrok实现内网穿透">
-<meta name="twitter:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --restart always \ --name ngrok-server \ -p 8880:80 \ -p 8443:443 \ -p 44">
+<meta name="twitter:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
 
 
 
@@ -322,7 +322,11 @@
         <blockquote>
 <p>之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優</p>
 </blockquote>
-<h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
+<h4 id="可能會用到的centos輔助命令"><a href="#可能會用到的centos輔助命令" class="headerlink" title="可能會用到的centos輔助命令"></a>可能會用到的centos輔助命令</h4><p><a href="https://www.centos.bz/2018/03/centos%e6%9f%a5%e7%9c%8b%e7%ab%af%e5%8f%a3%e5%8d%a0%e7%94%a8%e6%83%85%e5%86%b5%e5%92%8c%e5%bc%80%e5%90%af%e7%ab%af%e5%8f%a3%e5%91%bd%e4%bb%a4/" target="_blank" rel="noopener">端口命令連結</a></p>
+<pre><code>#查看80端口狀況
+lsof -i tcp:80
+#列出所有端口
+netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
 <pre><code>docker run -idt \
 --restart always \
 --name ngrok-server \
@@ -330,7 +334,7 @@
 -p 8443:443 \
 -p 4443:4443 \
 -v /data/ngrok:/myfiles \
--e DOMAIN=&apos;tunnel.coodata.cn&apos; \
+-e DOMAIN=&apos;nb.coodata.cn&apos; \
 hteen/ngrok /bin/sh /server.sh</code></pre>
       
     </div>
@@ -477,7 +481,7 @@ hteen/ngrok /bin/sh /server.sh</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number">1.</span> <span class="nav-text">採用Docker + ngrok</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可能會用到的centos輔助命令"><span class="nav-number">1.</span> <span class="nav-text">可能會用到的centos輔助命令</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number"></span> <span class="nav-text">採用Docker + ngrok</span></a></li></div>
             
 
           </div>
