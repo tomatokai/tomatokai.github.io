@@ -330,7 +330,14 @@ lsof -i tcp:80
 netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><blockquote>
 <p>前面的域名設置是一樣的,可以參考上一篇<a href="https://tomatokai.github.io/2019/06/28/centos7-%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ngrok%E6%9C%8D%E5%8B%99/" target="_blank" rel="noopener">centos7 搭建自己的ngrok服務</a></p>
 </blockquote>
-<h4 id="創建docker-ngrok容器"><a href="#創建docker-ngrok容器" class="headerlink" title="創建docker ngrok容器"></a>創建docker ngrok容器</h4><pre><code>docker run -idt \
+<blockquote>
+<p>由於之前的go版本問題，導致做出來的客戶端無法在linux運行（mac和windows都沒有問題）,此時需要做如下修改後，再啟動容器</p>
+</blockquote>
+<pre><code>git clone https://github.com/hteen/docker-ngrok.git
+cd docker-ngrok
+sed -i &apos;1cFROM golang:1.8.3&apos; Dockerfile
+sed -i &apos;4cRUN apt-get install git make openssl&apos;     Dockerfile
+docker build -t hteen/ngrok .</code></pre><h4 id="創建docker-ngrok容器"><a href="#創建docker-ngrok容器" class="headerlink" title="創建docker ngrok容器"></a>創建docker ngrok容器</h4><pre><code>docker run -idt \
 --restart always \
 --name ngrok-server \
 -p 8880:80 \
@@ -349,7 +356,7 @@ systemctl restart docker     #重启docker</code></pre><h4 id="添加反向代�
 <p>vi ~/nginx/conf.d/ngrok-proxy.conf</p>
 <pre><code>server {
 listen 80;
-server_name tunnel.findingu.cn *.tunnel.findingu.cn;
+server_name nb.coodata.cn *.nb.coodata.cn;
 location / {
     proxy_redirect off;
     proxy_set_header Host $host;
@@ -360,7 +367,7 @@ location / {
 }
 server {
 listen 443;
-server_name tunnel.findingu.cn *.tunnel.findingu.cn;
+server_name nb.coodata.cn *.nb.coodata.cn;
 location / {
     proxy_redirect off;
     proxy_set_header Host $host;
