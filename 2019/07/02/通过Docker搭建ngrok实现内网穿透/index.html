@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
+<meta name="description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務  創">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Docker搭建ngrok实现内网穿透">
 <meta property="og:url" content="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
+<meta property="og:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務  創">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-02T02:47:42.282Z">
+<meta property="og:updated_time" content="2019-07-02T03:46:23.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Docker搭建ngrok实现内网穿透">
-<meta name="twitter:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok參考文獻創建docker ngrok容器 docker run -idt \ --re">
+<meta name="twitter:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務  創">
 
 
 
@@ -326,8 +326,10 @@
 <pre><code>#查看80端口狀況
 lsof -i tcp:80
 #列出所有端口
-netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">參考文獻</a><br>創建docker ngrok容器</p>
-<pre><code>docker run -idt \
+netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><blockquote>
+<p>前面的域名設置是一樣的,可以參考上一篇<a href="https://tomatokai.github.io/2019/06/28/centos7-%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ngrok%E6%9C%8D%E5%8B%99/" target="_blank" rel="noopener">centos7 搭建自己的ngrok服務</a></p>
+</blockquote>
+<h4 id="創建docker-ngrok容器"><a href="#創建docker-ngrok容器" class="headerlink" title="創建docker ngrok容器"></a>創建docker ngrok容器</h4><pre><code>docker run -idt \
 --restart always \
 --name ngrok-server \
 -p 8880:80 \
@@ -335,7 +337,41 @@ netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngr
 -p 4443:4443 \
 -v /data/ngrok:/myfiles \
 -e DOMAIN=&apos;nb.coodata.cn&apos; \
-hteen/ngrok /bin/sh /server.sh</code></pre>
+hteen/ngrok /bin/sh /server.sh</code></pre><p>備註:記得把nb.coodata.cn改為自己的域名</p>
+<blockquote>
+<p>第一次創建的時候直接可以運行，第二次則出現問題（exit status 1）通過以下代碼解決</p>
+</blockquote>
+<pre><code>pkill docker                 #终止进程
+iptables -t nat -F           #清空nat表的所有链
+ifconfig docker0 down        #停止docker默认网桥  
+systemctl restart docker     #重启docker</code></pre><h4 id="添加反向代理"><a href="#添加反向代理" class="headerlink" title="添加反向代理"></a>添加反向代理</h4><p>主要是因為80,443端口通常佔用了<br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">查看nginx反向代理服务器如何搭建</a></p>
+<p>vi ~/nginx/conf.d/ngrok-proxy.conf</p>
+<pre><code>server {
+listen 80;
+server_name tunnel.findingu.cn *.tunnel.findingu.cn;
+location / {
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://193.112.101.53:8880;      #代理的ip+端口
+  }
+}
+server {
+listen 443;
+server_name tunnel.findingu.cn *.tunnel.findingu.cn;
+location / {
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://193.112.101.53:8443;      #代理的ip+端口
+}
+}</code></pre><h4 id="下載客戶端"><a href="#下載客戶端" class="headerlink" title="下載客戶端"></a>下載客戶端</h4><p>和之前的方法一樣,mac的是用/data/ngrok/bin/darwin_amd64/ngrok這個</p>
+<h5 id="添加可執行權限-並創建cfg文件"><a href="#添加可執行權限-並創建cfg文件" class="headerlink" title="添加可執行權限,並創建cfg文件"></a>添加可執行權限,並創建cfg文件</h5><pre><code>chmod +x ngrok</code></pre><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">文獻1:Docker+Ngrok+Nginx实现内网穿透
+</a><br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">文獻2:Docker 部署Nginx反向代理服务器
+</a></p>
+
       
     </div>
     
@@ -481,7 +517,7 @@ hteen/ngrok /bin/sh /server.sh</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可能會用到的centos輔助命令"><span class="nav-number">1.</span> <span class="nav-text">可能會用到的centos輔助命令</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number"></span> <span class="nav-text">採用Docker + ngrok</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可能會用到的centos輔助命令"><span class="nav-number">1.</span> <span class="nav-text">可能會用到的centos輔助命令</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number"></span> <span class="nav-text">採用Docker + ngrok</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#創建docker-ngrok容器"><span class="nav-number">1.</span> <span class="nav-text">創建docker ngrok容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加反向代理"><span class="nav-number">2.</span> <span class="nav-text">添加反向代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下載客戶端"><span class="nav-number">3.</span> <span class="nav-text">下載客戶端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加可執行權限-並創建cfg文件"><span class="nav-number">3.1.</span> <span class="nav-text">添加可執行權限,並創建cfg文件</span></a></li></ol></li></ol></li></div>
             
 
           </div>
