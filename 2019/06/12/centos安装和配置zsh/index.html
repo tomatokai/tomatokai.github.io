@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.安装virtualbox，安装centos7 2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络） 3.进入全局设置固定IP，通常为 56.1(或者137.1)  假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查  4.进入centos系统，对 etc/sysconfig/network**    进行enp0">
+<meta name="description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows 中安裝Centos7 並設置 VirtualBox">
-<meta property="og:url" content="http://yoursite.com/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/index.html">
+<meta property="og:title" content="centos安装和配置zsh">
+<meta property="og:url" content="http://yoursite.com/2019/06/12/centos安装和配置zsh/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="1.安装virtualbox，安装centos7 2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络） 3.进入全局设置固定IP，通常为 56.1(或者137.1)  假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查  4.进入centos系统，对 etc/sysconfig/network**    进行enp0">
+<meta property="og:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-05T07:19:51.339Z">
+<meta property="og:updated_time" content="2019-07-05T07:50:15.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows 中安裝Centos7 並設置 VirtualBox">
-<meta name="twitter:description" content="1.安装virtualbox，安装centos7 2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络） 3.进入全局设置固定IP，通常为 56.1(或者137.1)  假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查  4.进入centos系统，对 etc/sysconfig/network**    进行enp0">
+<meta name="twitter:title" content="centos安装和配置zsh">
+<meta name="twitter:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/12/centos安装和配置zsh/">
 
 
 
 
 
-  <title>Windows 中安裝Centos7 並設置 VirtualBox | Tomatokai</title>
+  <title>centos安装和配置zsh | Tomatokai</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/centos安装和配置zsh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tomatokai">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Windows 中安裝Centos7 並設置 VirtualBox</h1>
+          <h1 class="post-title" itemprop="name headline">centos安装和配置zsh</h1>
         
 
         <div class="post-meta">
@@ -281,7 +281,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T13:56:20+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T13:56:29+08:00">
                 2019-06-12
               </time>
             
@@ -319,68 +319,34 @@
       
 
       
-        <p>1.安装virtualbox，安装centos7</p>
-<p>2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络）</p>
-<p>3.进入全局设置固定IP，通常为 56.1(或者137.1)</p>
-<blockquote>
-<p>假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查</p>
+        <blockquote>
+<p>mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。<br>此文是centos的安裝配置</p>
 </blockquote>
-<p>4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），</p>
-<ol start="5">
-<li>复制 cp enp0s3 enp0s8 继续修改(需要确定uuid)<br>重启网卡</li>
-</ol>
-<p>6.检查是否可以上网，和主机互相ping</p>
-<p>7.安装ssh</p>
-<p>8.把端口印到主机局域网IP</p>
-<p>9.下载xshell 工具链接</p>
-<pre><code>#enp0s3
-TYPE=Ethernet
-BOOTPROTO=static
-DEFROUTE=yes
-PEERDNS=yes
-PEERROUTES=yes
-IPV4_FAILURE_FATAL=no
-IPV6INIT=yes
-IPV6_AUTOCONF=yes
-IPV6_DEFROUTE=yes
-IPV6_FAILURE_FATAL=no
-IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=enp0s3
-UUID=60aa3694-4b4b-4147-a3c7-251d1178c34a
-DEVICE=enp0s3
-ONBOOT=yes
-IPADDR=192.168.56.1
+<h4 id="mac自帶ssh命令（純屬備忘）"><a href="#mac自帶ssh命令（純屬備忘）" class="headerlink" title="mac自帶ssh命令（純屬備忘）"></a>mac自帶ssh命令（純屬備忘）</h4><pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh-my-zsh"></a>centos中安裝和配置 oh-my-zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh
+#或者
+yum -y install zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5><pre><code>curl
+sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
 
-#enp0s8
-TYPE=Ethernet
-BOOTPROTO=dhcp
-DEFROUTE=yes
-PEERDNS=yes
-PEERROUTES=yes
-IPV4_FAILURE_FATAL=no
-IPV6INIT=yes
-IPV6_AUTOCONF=yes
-IPV6_DEFROUTE=yes
-IPV6_FAILURE_FATAL=no
-IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=enp0s8
-UUID=745f8959-57af-4035-87cf-0fdcc4d2e2c2
-DEVICE=enp0s8
-ONBOOT=yes</code></pre><h6 id="关于docker-无法运行的解決方法"><a href="#关于docker-无法运行的解決方法" class="headerlink" title="关于docker 无法运行的解決方法"></a>关于docker 无法运行的解決方法</h6><blockquote>
-<p>在新的Centos上安装Docker-CE,后运行docker run hello-world报错Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
-</blockquote>
-<pre><code>#解决办法
-$ systemctl daemon-reload
-$ sudo service docker restart
-$ sudo service docker status
-#可以看到状态 运行中 running
-$ sudo docker run hello-world</code></pre><h4 id="设置windows自动启动虚拟机系统"><a href="#设置windows自动启动虚拟机系统" class="headerlink" title="设置windows自动启动虚拟机系统"></a>设置windows自动启动虚拟机系统</h4><h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>新建一个vbs</p>
-<pre><code>Set objShell = WScript.CreateObject(&quot;WScript.Shell&quot;)  
-cmd = &quot;cmd.exe /C &quot;&quot;&quot;&quot;C:\Program Files\Oracle\VirtualBox\VBoxHeadless.exe&quot;&quot; --startvm centos&quot;&quot;&quot;    
+wget
+sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code></pre><h5 id="配置oh-my-zsh主題和插件"><a href="#配置oh-my-zsh主題和插件" class="headerlink" title="配置oh my zsh主題和插件"></a>配置oh my zsh主題和插件</h5><pre><code>#查看主題
+ls ~/.oh-my-zsh/themes
+#修改主題
+vim ~/.zshrc
+#把ZSH_THEME=&quot;roobbyrussel&quot;改成喜歡的
+ZSH_THEME=&quot;ys&quot;
 
-returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startup (C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\StartUp)</p>
-<h5 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h5><p>新建一个记事本,名字保存为Virtualbox.bat<br>    @ECHO OFF<br>    start D:\dev\VirtualBox\VirtualBox.exe -startvm ubuntu12.04<br>    EXIT<br>放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+#安装语法自动填充 zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
+#安装语法高亮 zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+#让插件生效
+vi ~/.zshrc
+把插件位置改为如下:
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+#让新配置生效
+source ~/.zshrc</code></pre>
       
     </div>
     
@@ -404,8 +370,8 @@ returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startu
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/06/Markdown-入門基礎語法/" rel="next" title="Markdown,入門基礎語法">
-                <i class="fa fa-chevron-left"></i> Markdown,入門基礎語法
+              <a href="/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/" rel="next" title="Windows 中安裝Centos7 並設置 VirtualBox">
+                <i class="fa fa-chevron-left"></i> Windows 中安裝Centos7 並設置 VirtualBox
               </a>
             
           </div>
@@ -414,8 +380,8 @@ returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startu
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/12/centos安装和配置zsh/" rel="prev" title="centos安装和配置zsh">
-                centos安装和配置zsh <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/21/Docker-上運行centos/" rel="prev" title="Docker 中安裝centos並且進行ssh">
+                Docker 中安裝centos並且進行ssh <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +496,7 @@ returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startu
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#关于docker-无法运行的解決方法"><span class="nav-number">1.</span> <span class="nav-text">关于docker 无法运行的解決方法</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#设置windows自动启动虚拟机系统"><span class="nav-number"></span> <span class="nav-text">设置windows自动启动虚拟机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法1"><span class="nav-number"></span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法2"><span class="nav-number"></span> <span class="nav-text">方法2</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#mac自帶ssh命令（純屬備忘）"><span class="nav-number">1.</span> <span class="nav-text">mac自帶ssh命令（純屬備忘）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#centos中安裝和配置-oh-my-zsh"><span class="nav-number">2.</span> <span class="nav-text">centos中安裝和配置 oh-my-zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-zsh"><span class="nav-number">2.1.</span> <span class="nav-text">安裝 zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-oh-my-zsh"><span class="nav-number">2.2.</span> <span class="nav-text">安裝 oh-my-zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置oh-my-zsh主題和插件"><span class="nav-number">2.3.</span> <span class="nav-text">配置oh my zsh主題和插件</span></a></li></ol></li></ol></div>
             
 
           </div>
