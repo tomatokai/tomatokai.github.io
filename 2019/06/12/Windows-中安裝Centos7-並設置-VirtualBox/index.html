@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="1.安装virtualbox，安装centos7 2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络） 3.进入全局设置固定IP，通常为 56.1 4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），  复制 cp enp0s3 enp0s8 继续修改(需要确定uu">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-06-12T05:57:58.761Z">
+<meta property="og:updated_time" content="2019-07-05T07:04:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows 中安裝Centos7 並設置 VirtualBox">
 <meta name="twitter:description" content="1.安装virtualbox，安装centos7 2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络） 3.进入全局设置固定IP，通常为 56.1 4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），  复制 cp enp0s3 enp0s8 继续修改(需要确定uu">
@@ -371,7 +371,13 @@ $ systemctl daemon-reload
 $ sudo service docker restart
 $ sudo service docker status
 #可以看到状态 运行中 running
-$ sudo docker run hello-world</code></pre>
+$ sudo docker run hello-world</code></pre><h4 id="设置windows自动启动虚拟机系统"><a href="#设置windows自动启动虚拟机系统" class="headerlink" title="设置windows自动启动虚拟机系统"></a>设置windows自动启动虚拟机系统</h4><h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>新建一个vbs</p>
+<pre><code>Set objShell = WScript.CreateObject(&quot;WScript.Shell&quot;)  
+cmd = &quot;cmd.exe /C &quot;&quot;&quot;&quot;C:\Program Files\Oracle\VirtualBox\VBoxHeadless.exe&quot;&quot; --startvm centos&quot;&quot;&quot;    
+
+returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startup (C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\StartUp)</p>
+<h5 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h5><p>新建一个记事本,名字保存为Virtualbox.bat<br>    @ECHO OFF<br>    start D:\dev\VirtualBox\VirtualBox.exe -startvm ubuntu12.04<br>    EXIT<br>放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+
       
     </div>
     
@@ -484,7 +490,7 @@ $ sudo docker run hello-world</code></pre>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -521,7 +527,7 @@ $ sudo docker run hello-world</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#关于docker-无法运行的解決方法"><span class="nav-number">1.</span> <span class="nav-text">关于docker 无法运行的解決方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#关于docker-无法运行的解決方法"><span class="nav-number">1.</span> <span class="nav-text">关于docker 无法运行的解決方法</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#设置windows自动启动虚拟机系统"><span class="nav-number"></span> <span class="nav-text">设置windows自动启动虚拟机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法1"><span class="nav-number"></span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法2"><span class="nav-number"></span> <span class="nav-text">方法2</span></a></li></ol></li></div>
             
 
           </div>

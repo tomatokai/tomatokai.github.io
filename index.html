@@ -249,6 +249,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/在Docker中運行centos7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/05/在Docker中運行centos7/" itemprop="url">在Docker中運行centos7</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-05T09:54:57+08:00">
+                2019-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>centos7有一個大坑,直接執行不了systemctl命令,需要升級到7.2解決，或者通過以下命令進入</p>
+</blockquote>
+<pre><code>#啟動需要等待1分30秒
+docker run --name centos_7 -it --privileged tomatokai/centos /usr/sbin/init
+docker exec -it &lt;containID&gt; /bin/bash</code></pre><h3 id="搭建自己的centos"><a href="#搭建自己的centos" class="headerlink" title="搭建自己的centos"></a>搭建自己的centos</h3><h4 id="安裝centos"><a href="#安裝centos" class="headerlink" title="安裝centos"></a>安裝centos</h4><pre><code>docker pull centos
+docker run -it --privileged centos /usr/sbin/init</code></pre><h4 id="進入centos"><a href="#進入centos" class="headerlink" title="進入centos"></a>進入centos</h4><pre><code>docker exec -it &lt;containID&gt; /bin/bash
+docker exec -it centos /usr/sbin/init</code></pre><h4 id="為了啟動docker-天坑開始"><a href="#為了啟動docker-天坑開始" class="headerlink" title="為了啟動docker,天坑開始"></a>為了啟動docker,天坑開始</h4><pre><code>#安裝service
+yum install initscripts
+#依然啟動不了docker,檢查問題所在((code=exited, status=1/FAILURE))
+systemctl status docker.service
+#修改如下
+vi /lib/systemd/system/docker.service
+#然後將ExecStart這裏改為如下
+ExecStart=/usr/bin/dockerd -H fd:// -s overlay2</code></pre><h4 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh my zsh"></a>安裝 oh my zsh</h4><h4 id="安裝-docker"><a href="#安裝-docker" class="headerlink" title="安裝 docker"></a>安裝 docker</h4><h3 id="生成專屬的centos鏡像"><a href="#生成專屬的centos鏡像" class="headerlink" title="生成專屬的centos鏡像"></a>生成專屬的centos鏡像</h3><pre><code>docker commit &lt;containsID&gt; tomatokai/centos
+docker tag &lt;imagesID&gt; 127.0.0.1:5000/tomatokai/centos
+docker push 127.0.0.1:5000/tomatokai/centos</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/Win10下完美運行docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/03/Win10下完美運行docker/" itemprop="url">Win10下完美運行docker</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-03T17:28:28+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1100,7 +1354,13 @@ $ systemctl daemon-reload
 $ sudo service docker restart
 $ sudo service docker status
 #可以看到状态 运行中 running
-$ sudo docker run hello-world</code></pre>
+$ sudo docker run hello-world</code></pre><h4 id="设置windows自动启动虚拟机系统"><a href="#设置windows自动启动虚拟机系统" class="headerlink" title="设置windows自动启动虚拟机系统"></a>设置windows自动启动虚拟机系统</h4><h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>新建一个vbs</p>
+<pre><code>Set objShell = WScript.CreateObject(&quot;WScript.Shell&quot;)  
+cmd = &quot;cmd.exe /C &quot;&quot;&quot;&quot;C:\Program Files\Oracle\VirtualBox\VBoxHeadless.exe&quot;&quot; --startvm centos&quot;&quot;&quot;    
+
+returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startup (C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\StartUp)</p>
+<h5 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h5><p>新建一个记事本,名字保存为Virtualbox.bat<br>    @ECHO OFF<br>    start D:\dev\VirtualBox\VirtualBox.exe -startvm ubuntu12.04<br>    EXIT<br>放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+
           
         
       
@@ -1467,7 +1727,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
