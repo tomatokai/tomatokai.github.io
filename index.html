@@ -1175,15 +1175,29 @@ yum install net-tools.x86_64</code></pre>
 </blockquote>
 <h4 id="mac自帶ssh命令（純屬備忘）"><a href="#mac自帶ssh命令（純屬備忘）" class="headerlink" title="mac自帶ssh命令（純屬備忘）"></a>mac自帶ssh命令（純屬備忘）</h4><pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh-my-zsh"></a>centos中安裝和配置 oh-my-zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh
 #或者
-yum -y install zsh</code></pre><h5 id="設置zsh為默認的shell"><a href="#設置zsh為默認的shell" class="headerlink" title="設置zsh為默認的shell"></a>設置zsh為默認的shell</h5><pre><code>chsh -s /bin/zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5><pre><code>curl
+yum -y install zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5><pre><code>curl
 sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
 
 wget
-sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code></pre><h5 id="配置oh-my-zsh主題"><a href="#配置oh-my-zsh主題" class="headerlink" title="配置oh my zsh主題"></a>配置oh my zsh主題</h5><pre><code>#查看主題
+sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code></pre><h5 id="配置oh-my-zsh主題和插件"><a href="#配置oh-my-zsh主題和插件" class="headerlink" title="配置oh my zsh主題和插件"></a>配置oh my zsh主題和插件</h5><pre><code>#查看主題
 ls ~/.oh-my-zsh/themes
 #修改主題
 vim ~/.zshrc
-#把ZSH_THEME=&quot;roobbyrussel&quot;改成喜歡的</code></pre>
+#把ZSH_THEME=&quot;roobbyrussel&quot;改成喜歡的
+ZSH_THEME=&quot;ys&quot;
+
+#安装语法自动填充 zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+#安装语法高亮 zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+#让插件生效
+vi ~/.zshrc
+把插件位置改为如下:
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+#让新配置生效
+source ~/.zshrc</code></pre>
           
         
       
