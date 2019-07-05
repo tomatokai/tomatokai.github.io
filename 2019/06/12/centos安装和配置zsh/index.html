@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
+<meta name="description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  centos中安裝和配置 oh-my-zsh安裝 zshyum install zsh #或者 yum -y install zsh安裝 oh-my-zshcurl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos安装和配置zsh">
 <meta property="og:url" content="http://yoursite.com/2019/06/12/centos安装和配置zsh/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
+<meta property="og:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  centos中安裝和配置 oh-my-zsh安裝 zshyum install zsh #或者 yum -y install zsh安裝 oh-my-zshcurl">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-05T07:50:15.542Z">
+<meta property="og:updated_time" content="2019-07-05T07:58:48.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos安装和配置zsh">
-<meta name="twitter:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  mac自帶ssh命令（純屬備忘）ssh -t root@192.168.3.101 -p 22centos中安裝和配置 oh-my-zsh安裝 zshyum ins">
+<meta name="twitter:description" content="mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。此文是centos的安裝配置  centos中安裝和配置 oh-my-zsh安裝 zshyum install zsh #或者 yum -y install zsh安裝 oh-my-zshcurl">
 
 
 
@@ -322,7 +322,7 @@
         <blockquote>
 <p>mac自帶的終端少了語法高亮和自動填充等功能，用起來還是挺不方便的，尤其是用ssh的時候，就更加不方便了，後來發現了iTerm和zsh搭配使用，可以使得效率提高很多，於是記載下來，為便於需要配置時使用。<br>此文是centos的安裝配置</p>
 </blockquote>
-<h4 id="mac自帶ssh命令（純屬備忘）"><a href="#mac自帶ssh命令（純屬備忘）" class="headerlink" title="mac自帶ssh命令（純屬備忘）"></a>mac自帶ssh命令（純屬備忘）</h4><pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh-my-zsh"></a>centos中安裝和配置 oh-my-zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh
+<h4 id="centos中安裝和配置-oh-my-zsh"><a href="#centos中安裝和配置-oh-my-zsh" class="headerlink" title="centos中安裝和配置 oh-my-zsh"></a>centos中安裝和配置 oh-my-zsh</h4><h5 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h5><pre><code>yum install zsh
 #或者
 yum -y install zsh</code></pre><h5 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝 oh-my-zsh"></a>安裝 oh-my-zsh</h5><pre><code>curl
 sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
@@ -346,7 +346,7 @@ vi ~/.zshrc
 把插件位置改为如下:
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 #让新配置生效
-source ~/.zshrc</code></pre>
+source ~/.zshrc</code></pre><h4 id="mac自帶ssh命令（純屬備忘）"><a href="#mac自帶ssh命令（純屬備忘）" class="headerlink" title="mac自帶ssh命令（純屬備忘）"></a>mac自帶ssh命令（純屬備忘）</h4><pre><code>ssh -t root@192.168.3.101 -p 22</code></pre><h4 id="docker设置开机启动"><a href="#docker设置开机启动" class="headerlink" title="docker设置开机启动"></a>docker设置开机启动</h4><pre><code>systemctl enable docker</code></pre>
       
     </div>
     
@@ -496,7 +496,7 @@ source ~/.zshrc</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#mac自帶ssh命令（純屬備忘）"><span class="nav-number">1.</span> <span class="nav-text">mac自帶ssh命令（純屬備忘）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#centos中安裝和配置-oh-my-zsh"><span class="nav-number">2.</span> <span class="nav-text">centos中安裝和配置 oh-my-zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-zsh"><span class="nav-number">2.1.</span> <span class="nav-text">安裝 zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-oh-my-zsh"><span class="nav-number">2.2.</span> <span class="nav-text">安裝 oh-my-zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置oh-my-zsh主題和插件"><span class="nav-number">2.3.</span> <span class="nav-text">配置oh my zsh主題和插件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#centos中安裝和配置-oh-my-zsh"><span class="nav-number">1.</span> <span class="nav-text">centos中安裝和配置 oh-my-zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-zsh"><span class="nav-number">1.1.</span> <span class="nav-text">安裝 zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝-oh-my-zsh"><span class="nav-number">1.2.</span> <span class="nav-text">安裝 oh-my-zsh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置oh-my-zsh主題和插件"><span class="nav-number">1.3.</span> <span class="nav-text">配置oh my zsh主題和插件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mac自帶ssh命令（純屬備忘）"><span class="nav-number">2.</span> <span class="nav-text">mac自帶ssh命令（純屬備忘）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker设置开机启动"><span class="nav-number">3.</span> <span class="nav-text">docker设置开机启动</span></a></li></ol></div>
             
 
           </div>
