@@ -1304,7 +1304,10 @@ vim ~/.zshrc
           
             <p>1.安装virtualbox，安装centos7</p>
 <p>2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络）</p>
-<p>3.进入全局设置固定IP，通常为 56.1</p>
+<p>3.进入全局设置固定IP，通常为 56.1(或者137.1)</p>
+<blockquote>
+<p>假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查</p>
+</blockquote>
 <p>4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），</p>
 <ol start="5">
 <li>复制 cp enp0s3 enp0s8 继续修改(需要确定uuid)<br>重启网卡</li>
