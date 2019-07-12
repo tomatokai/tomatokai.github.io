@@ -606,8 +606,27 @@ hteen/ngrok /bin/sh /server.sh</code></pre><p>備註:記得把nb.coodata.cn改�
 <pre><code>pkill docker                 #终止进程
 iptables -t nat -F           #清空nat表的所有链
 ifconfig docker0 down        #停止docker默认网桥  
-systemctl restart docker     #重启docker</code></pre><h4 id="添加反向代理"><a href="#添加反向代理" class="headerlink" title="添加反向代理"></a>添加反向代理</h4><p>主要是因為80,443端口通常佔用了<br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">查看nginx反向代理服务器如何搭建</a></p>
-<p>vi ~/nginx/conf.d/ngrok-proxy.conf</p>
+systemctl restart docker     #重启docker</code></pre><h4 id="添加反向代理"><a href="#添加反向代理" class="headerlink" title="添加反向代理"></a>添加反向代理</h4><p>主要是因為80,443端口通常佔用了</p>
+<h5 id="搭建nginx反向代理服务器"><a href="#搭建nginx反向代理服务器" class="headerlink" title="搭建nginx反向代理服务器"></a>搭建nginx反向代理服务器</h5><h6 id="通过docker-compose搭建"><a href="#通过docker-compose搭建" class="headerlink" title="通过docker-compose搭建"></a>通过docker-compose搭建</h6><p>vi proxy-nginx.yml</p>
+<pre><code>nginx:
+image: nginx:latest
+container_name: proxy-nginx
+restart: always
+ports: 
+- 80:80
+volumes:
+    - ~/nginx/www:/usr/share/nginx/html
+    - ~/nginx/conf.d:/etc/nginx/conf.d</code></pre><p>docker-compose -f proxy-nginx.yml up -d</p>
+<h6 id="创建默认配置"><a href="#创建默认配置" class="headerlink" title="创建默认配置"></a>创建默认配置</h6><p>vi ~/nginx/conf.d/default.conf</p>
+<pre><code>server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+}</code></pre><h5 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h5><p>vi ~/nginx/conf.d/ngrok-proxy.conf</p>
 <pre><code>server {
 listen 80;
 server_name nb.coodata.cn *.nb.coodata.cn;
@@ -632,7 +651,7 @@ location / {
 }</code></pre><h4 id="下載客戶端"><a href="#下載客戶端" class="headerlink" title="下載客戶端"></a>下載客戶端</h4><p>和之前的方法一樣,mac的是用/data/ngrok/bin/darwin_amd64/ngrok這個</p>
 <h5 id="添加可執行權限-並創建cfg文件"><a href="#添加可執行權限-並創建cfg文件" class="headerlink" title="添加可執行權限,並創建cfg文件"></a>添加可執行權限,並創建cfg文件</h5><pre><code>chmod +x ngrok</code></pre><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">文獻1:Docker+Ngrok+Nginx实现内网穿透
 </a><br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">文獻2:Docker 部署Nginx反向代理服务器
-</a></p>
+</a><br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">文献3:查看nginx反向代理服务器如何搭建</a></p>
 
           
         
