@@ -321,14 +321,17 @@
         
           
             <h4 id="前提準備"><a href="#前提準備" class="headerlink" title="前提準備"></a>前提準備</h4><h5 id="安裝工具yum-utils"><a href="#安裝工具yum-utils" class="headerlink" title="安裝工具yum-utils"></a>安裝工具yum-utils</h5><p>用於管理repository和擴展包</p>
-<pre><code>yum install yum-utils</code></pre><h5 id="為python3-構造環境"><a href="#為python3-構造環境" class="headerlink" title="為python3 構造環境"></a>為python3 構造環境</h5><pre><code>yum-builddep python</code></pre><h5 id="下載python3源代碼包"><a href="#下載python3源代碼包" class="headerlink" title="下載python3源代碼包"></a>下載python3源代碼包</h5><pre><code>curl -O https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz</code></pre><h5 id="安裝pyhon3"><a href="#安裝pyhon3" class="headerlink" title="安裝pyhon3"></a>安裝pyhon3</h5><p>默認安裝目錄/usr/local</p>
+<pre><code>yum install yum-utils</code></pre><h5 id="為python3-構造環境"><a href="#為python3-構造環境" class="headerlink" title="為python3 構造環境"></a>為python3 構造環境</h5><pre><code>yum-builddep python</code></pre><h5 id="下載python3源代碼包"><a href="#下載python3源代碼包" class="headerlink" title="下載python3源代碼包"></a>下載python3源代碼包</h5><pre><code>curl -O https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz</code></pre><h5 id="安装依賴包"><a href="#安装依賴包" class="headerlink" title="安装依賴包"></a>安装依賴包</h5><p>有些系統沒有依賴包，導致安裝完成後沒有pip3</p>
+<pre><code>yum -y install bzip2-devel sqlite-devel openssl-devel readline-devel xz-devel xz-devel tk-devel gdbm-devel</code></pre><h5 id="安裝pyhon3"><a href="#安裝pyhon3" class="headerlink" title="安裝pyhon3"></a>安裝pyhon3</h5><p>默認安裝目錄/usr/local</p>
 <pre><code>tar xf python-3.7.1.tgz
 cd Python-3.7.1
-./configure
-make
-make install</code></pre><p>檢查安裝是否成功</p>
-<pre><code>python3 -V
-python3.7 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默認版本" class="headerlink" title="設置為默認版本"></a>設置為默認版本</h4><p>此處可以不設置，根據個人喜好</p>
+./configure prefix=/usr/local/python3
+make &amp;&amp; make install
+
+#设置路径
+ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+ln -s /usr/local/python3/bin/pip3 /usr/bin/pip</code></pre><p>檢查安裝是否成功</p>
+<pre><code>python3 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默認版本" class="headerlink" title="設置為默認版本"></a>設置為默認版本</h4><p>此處可以不設置，根據個人喜好</p>
 <pre><code>vi /etc/profile.d/python.sh</code></pre><p>增加一行</p>
 <pre><code>alias python=&apos;/usr/local/bin/python3.7&apos;</code></pre><p>設置權限</p>
 <pre><code>chmod 755 /etc/profile.d/python.sh</code></pre><p>重啓使配置生效</p>
@@ -345,7 +348,10 @@ pipenv install
 pipenv install requests
 pipenv install bottle
 #查看安裝模塊依賴關係
-pipenv graph</code></pre><h6 id="安裝jupyter"><a href="#安裝jupyter" class="headerlink" title="安裝jupyter"></a>安裝jupyter</h6><pre><code>pip install jupyter</code></pre>
+pipenv graph</code></pre><h6 id="安裝jupyter"><a href="#安裝jupyter" class="headerlink" title="安裝jupyter"></a>安裝jupyter</h6><pre><code>pip install jupyter</code></pre><h4 id="刪除python3"><a href="#刪除python3" class="headerlink" title="刪除python3"></a>刪除python3</h4><pre><code>#強制刪除安裝程序及關聯
+rpm -qa|grep python3|xargs rpm -ev --allmatches --nodeps
+
+whereis python3 |xargs rm -frv</code></pre>
           
         
       
