@@ -332,7 +332,20 @@ python3.7 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默�
 <pre><code>vi /etc/profile.d/python.sh</code></pre><p>增加一行</p>
 <pre><code>alias python=&apos;/usr/local/bin/python3.7&apos;</code></pre><p>設置權限</p>
 <pre><code>chmod 755 /etc/profile.d/python.sh</code></pre><p>重啓使配置生效</p>
-<pre><code>source /etc/profile.d/python.sh</code></pre><h4 id="安裝jupyter-notebook"><a href="#安裝jupyter-notebook" class="headerlink" title="安裝jupyter notebook"></a>安裝jupyter notebook</h4>
+<pre><code>source /etc/profile.d/python.sh</code></pre><h4 id="安裝jupyter-notebook"><a href="#安裝jupyter-notebook" class="headerlink" title="安裝jupyter notebook"></a>安裝jupyter notebook</h4><h5 id="安裝pip-2-7"><a href="#安裝pip-2-7" class="headerlink" title="安裝pip(2.7)"></a>安裝pip(2.7)</h5><pre><code>yum -y isntall python-pip
+pip install --upgrade pip</code></pre><h5 id="安裝pip34"><a href="#安裝pip34" class="headerlink" title="安裝pip34"></a>安裝pip34</h5><pre><code>yum install python3.4-pip
+pip3.4 install --upgrade pip</code></pre><h5 id="安裝相關依賴"><a href="#安裝相關依賴" class="headerlink" title="安裝相關依賴"></a>安裝相關依賴</h5><pre><code>yum -y groupinstall &quot;Development Tools&quot;
+yum -y install python-devel</code></pre><h5 id="配置虛擬環境"><a href="#配置虛擬環境" class="headerlink" title="配置虛擬環境"></a>配置虛擬環境</h5><h6 id="安裝-pipenv"><a href="#安裝-pipenv" class="headerlink" title="安裝 pipenv"></a>安裝 pipenv</h6><pre><code>pip3.4 install pipenv</code></pre><h6 id="創建虛擬環境"><a href="#創建虛擬環境" class="headerlink" title="創建虛擬環境"></a>創建虛擬環境</h6><pre><code>#创建虚拟环境
+mkdir Jupyter    
+#进入虚拟环境
+cd Jupyter
+#安裝環境
+pipenv install
+#安裝依賴包
+pipenv install requests
+pipenv install bottle
+#查看安裝模塊依賴關係
+pipenv graph</code></pre><h6 id="安裝jupyter"><a href="#安裝jupyter" class="headerlink" title="安裝jupyter"></a>安裝jupyter</h6><pre><code>pip install jupyter</code></pre>
           
         
       

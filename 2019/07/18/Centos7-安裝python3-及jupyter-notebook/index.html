@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="前提準備安裝工具yum-utils用於管理repository和擴展包 yum install yum-utils為python3 構造環境yum-builddep python下載python3源代碼包curl -O https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz安裝pyhon3默認安裝目錄/usr/local tar xf py">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-18T02:37:19.936Z">
+<meta property="og:updated_time" content="2019-07-18T04:03:29.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7 安裝python3 及jupyter notebook">
 <meta name="twitter:description" content="前提準備安裝工具yum-utils用於管理repository和擴展包 yum install yum-utils為python3 構造環境yum-builddep python下載python3源代碼包curl -O https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz安裝pyhon3默認安裝目錄/usr/local tar xf py">
@@ -331,7 +331,20 @@ python3.7 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默�
 <pre><code>vi /etc/profile.d/python.sh</code></pre><p>增加一行</p>
 <pre><code>alias python=&apos;/usr/local/bin/python3.7&apos;</code></pre><p>設置權限</p>
 <pre><code>chmod 755 /etc/profile.d/python.sh</code></pre><p>重啓使配置生效</p>
-<pre><code>source /etc/profile.d/python.sh</code></pre><h4 id="安裝jupyter-notebook"><a href="#安裝jupyter-notebook" class="headerlink" title="安裝jupyter notebook"></a>安裝jupyter notebook</h4>
+<pre><code>source /etc/profile.d/python.sh</code></pre><h4 id="安裝jupyter-notebook"><a href="#安裝jupyter-notebook" class="headerlink" title="安裝jupyter notebook"></a>安裝jupyter notebook</h4><h5 id="安裝pip-2-7"><a href="#安裝pip-2-7" class="headerlink" title="安裝pip(2.7)"></a>安裝pip(2.7)</h5><pre><code>yum -y isntall python-pip
+pip install --upgrade pip</code></pre><h5 id="安裝pip34"><a href="#安裝pip34" class="headerlink" title="安裝pip34"></a>安裝pip34</h5><pre><code>yum install python3.4-pip
+pip3.4 install --upgrade pip</code></pre><h5 id="安裝相關依賴"><a href="#安裝相關依賴" class="headerlink" title="安裝相關依賴"></a>安裝相關依賴</h5><pre><code>yum -y groupinstall &quot;Development Tools&quot;
+yum -y install python-devel</code></pre><h5 id="配置虛擬環境"><a href="#配置虛擬環境" class="headerlink" title="配置虛擬環境"></a>配置虛擬環境</h5><h6 id="安裝-pipenv"><a href="#安裝-pipenv" class="headerlink" title="安裝 pipenv"></a>安裝 pipenv</h6><pre><code>pip3.4 install pipenv</code></pre><h6 id="創建虛擬環境"><a href="#創建虛擬環境" class="headerlink" title="創建虛擬環境"></a>創建虛擬環境</h6><pre><code>#创建虚拟环境
+mkdir Jupyter    
+#进入虚拟环境
+cd Jupyter
+#安裝環境
+pipenv install
+#安裝依賴包
+pipenv install requests
+pipenv install bottle
+#查看安裝模塊依賴關係
+pipenv graph</code></pre><h6 id="安裝jupyter"><a href="#安裝jupyter" class="headerlink" title="安裝jupyter"></a>安裝jupyter</h6><pre><code>pip install jupyter</code></pre>
       
     </div>
     
@@ -477,7 +490,7 @@ python3.7 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提準備"><span class="nav-number">1.</span> <span class="nav-text">前提準備</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝工具yum-utils"><span class="nav-number">1.1.</span> <span class="nav-text">安裝工具yum-utils</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#為python3-構造環境"><span class="nav-number">1.2.</span> <span class="nav-text">為python3 構造環境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下載python3源代碼包"><span class="nav-number">1.3.</span> <span class="nav-text">下載python3源代碼包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝pyhon3"><span class="nav-number">1.4.</span> <span class="nav-text">安裝pyhon3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#設置為默認版本"><span class="nav-number">2.</span> <span class="nav-text">設置為默認版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝jupyter-notebook"><span class="nav-number">3.</span> <span class="nav-text">安裝jupyter notebook</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提準備"><span class="nav-number">1.</span> <span class="nav-text">前提準備</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝工具yum-utils"><span class="nav-number">1.1.</span> <span class="nav-text">安裝工具yum-utils</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#為python3-構造環境"><span class="nav-number">1.2.</span> <span class="nav-text">為python3 構造環境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下載python3源代碼包"><span class="nav-number">1.3.</span> <span class="nav-text">下載python3源代碼包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝pyhon3"><span class="nav-number">1.4.</span> <span class="nav-text">安裝pyhon3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#設置為默認版本"><span class="nav-number">2.</span> <span class="nav-text">設置為默認版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝jupyter-notebook"><span class="nav-number">3.</span> <span class="nav-text">安裝jupyter notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝pip-2-7"><span class="nav-number">3.1.</span> <span class="nav-text">安裝pip(2.7)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝pip34"><span class="nav-number">3.2.</span> <span class="nav-text">安裝pip34</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安裝相關依賴"><span class="nav-number">3.3.</span> <span class="nav-text">安裝相關依賴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置虛擬環境"><span class="nav-number">3.4.</span> <span class="nav-text">配置虛擬環境</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安裝-pipenv"><span class="nav-number">3.4.1.</span> <span class="nav-text">安裝 pipenv</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#創建虛擬環境"><span class="nav-number">3.4.2.</span> <span class="nav-text">創建虛擬環境</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安裝jupyter"><span class="nav-number">3.4.3.</span> <span class="nav-text">安裝jupyter</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
