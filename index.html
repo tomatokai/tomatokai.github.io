@@ -249,6 +249,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Centos7 安裝python3 及jupyter notebook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/Centos7 安裝python3 及jupyter notebook/" itemprop="url">Centos7 安裝python3 及jupyter notebook</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T10:09:11+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前提準備"><a href="#前提準備" class="headerlink" title="前提準備"></a>前提準備</h4><h5 id="安裝工具yum-utils"><a href="#安裝工具yum-utils" class="headerlink" title="安裝工具yum-utils"></a>安裝工具yum-utils</h5><p>用於管理repository和擴展包</p>
+<pre><code>yum install yum-utils</code></pre><h5 id="為python3-構造環境"><a href="#為python3-構造環境" class="headerlink" title="為python3 構造環境"></a>為python3 構造環境</h5><pre><code>yum-builddep python</code></pre><h5 id="下載python3源代碼包"><a href="#下載python3源代碼包" class="headerlink" title="下載python3源代碼包"></a>下載python3源代碼包</h5><pre><code>curl -O https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz</code></pre><h5 id="安裝pyhon3"><a href="#安裝pyhon3" class="headerlink" title="安裝pyhon3"></a>安裝pyhon3</h5><p>默認安裝目錄/usr/local</p>
+<pre><code>tar xf python-3.7.1.tgz
+cd Python-3.7.1
+./configure
+make
+make install</code></pre><p>檢查安裝是否成功</p>
+<pre><code>python3 -V
+python3.7 -V</code></pre><h4 id="設置為默認版本"><a href="#設置為默認版本" class="headerlink" title="設置為默認版本"></a>設置為默認版本</h4><p>此處可以不設置，根據個人喜好</p>
+<pre><code>vi /etc/profile.d/python.sh</code></pre><p>增加一行</p>
+<pre><code>alias python=&apos;/usr/local/bin/python3.7&apos;</code></pre><p>設置權限</p>
+<pre><code>chmod 755 /etc/profile.d/python.sh</code></pre><p>重啓使配置生效</p>
+<pre><code>source /etc/profile.d/python.sh</code></pre><h4 id="安裝jupyter-notebook"><a href="#安裝jupyter-notebook" class="headerlink" title="安裝jupyter notebook"></a>安裝jupyter notebook</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/在Docker中運行centos7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1598,128 +1729,13 @@ import matplotlib as mpl</code></pre><hr>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/哈嘍-此刻開啟終生學習之旅/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tomatokai">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomatokai">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/05/哈嘍-此刻開啟終生學習之旅/" itemprop="url">哈嘍,此刻開啟終生學習之旅</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-05T22:42:29+08:00">
-                2019-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="筆者是一位沒有編程基礎的人員，由於自學Python後發現編程真的是一件很有趣的事情，於是想分享一些踩過的坑。涉及內容都是初級，若有新進人員看到其中的錯誤，謝謝提出更正，將不甚感激！"><a href="#筆者是一位沒有編程基礎的人員，由於自學Python後發現編程真的是一件很有趣的事情，於是想分享一些踩過的坑。涉及內容都是初級，若有新進人員看到其中的錯誤，謝謝提出更正，將不甚感激！" class="headerlink" title="筆者是一位沒有編程基礎的人員，由於自學Python後發現編程真的是一件很有趣的事情，於是想分享一些踩過的坑。涉及內容都是初級，若有新進人員看到其中的錯誤，謝謝提出更正，將不甚感激！"></a>筆者是一位沒有編程基礎的人員，由於自學Python後發現編程真的是一件很有趣的事情，於是想分享一些踩過的坑。涉及內容都是初級，若有新進人員看到其中的錯誤，謝謝提出更正，將不甚感激！</h5>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1763,7 +1779,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
