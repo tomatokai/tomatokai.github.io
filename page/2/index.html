@@ -249,6 +249,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/12/Windows-中安裝Centos7-並設置-VirtualBox/" itemprop="url">Windows 中安裝Centos7 並設置 VirtualBox</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T13:56:20+08:00">
+                2019-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.安装virtualbox，安装centos7</p>
+<p>2.配置cnetos7网络，网卡1：用 only host  网卡2:用nat（记得在主机设置共享网络）</p>
+<p>3.进入全局设置固定IP，通常为 56.1(或者137.1)</p>
+<blockquote>
+<p>假如安装的是5.26版本的VMBOX,则不需要以下设置,直接和主机互ping检查</p>
+</blockquote>
+<p>4.进入centos系统，对 etc/sysconfig/network**    进行enp0s3修改（这个是only host），</p>
+<ol start="5">
+<li>复制 cp enp0s3 enp0s8 继续修改(需要确定uuid)<br>重启网卡</li>
+</ol>
+<p>6.检查是否可以上网，和主机互相ping</p>
+<p>7.安装ssh</p>
+<p>8.把端口印到主机局域网IP</p>
+<p>9.下载xshell 工具链接</p>
+<pre><code>#enp0s3
+TYPE=Ethernet
+BOOTPROTO=static
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=enp0s3
+UUID=60aa3694-4b4b-4147-a3c7-251d1178c34a
+DEVICE=enp0s3
+ONBOOT=yes
+IPADDR=192.168.56.1
+
+#enp0s8
+TYPE=Ethernet
+BOOTPROTO=dhcp
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=enp0s8
+UUID=745f8959-57af-4035-87cf-0fdcc4d2e2c2
+DEVICE=enp0s8
+ONBOOT=yes</code></pre><h6 id="关于docker-无法运行的解決方法"><a href="#关于docker-无法运行的解決方法" class="headerlink" title="关于docker 无法运行的解決方法"></a>关于docker 无法运行的解決方法</h6><blockquote>
+<p>在新的Centos上安装Docker-CE,后运行docker run hello-world报错Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
+</blockquote>
+<pre><code>#解决办法
+$ systemctl daemon-reload
+$ sudo service docker restart
+$ sudo service docker status
+#可以看到状态 运行中 running
+$ sudo docker run hello-world</code></pre><h4 id="设置windows自动启动虚拟机系统"><a href="#设置windows自动启动虚拟机系统" class="headerlink" title="设置windows自动启动虚拟机系统"></a>设置windows自动启动虚拟机系统</h4><h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>新建一个vbs</p>
+<pre><code>Set objShell = WScript.CreateObject(&quot;WScript.Shell&quot;)  
+cmd = &quot;cmd.exe /C &quot;&quot;&quot;&quot;C:\Program Files\Oracle\VirtualBox\VBoxHeadless.exe&quot;&quot; --startvm centos&quot;&quot;&quot;    
+
+returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startup (C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\StartUp)</p>
+<h5 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h5><p>新建一个记事本,名字保存为Virtualbox.bat<br>    @ECHO OFF<br>    start D:\dev\VirtualBox\VirtualBox.exe -startvm ubuntu12.04<br>    EXIT<br>放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/06/Markdown-入門基礎語法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -572,7 +752,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
