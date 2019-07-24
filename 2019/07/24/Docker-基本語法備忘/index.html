@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
+<meta name="description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，侷限學者方便複習。有需要學習的，完整教材可以查看以下兩個良心連結。  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 基本語法備忘">
 <meta property="og:url" content="http://yoursite.com/2019/07/24/Docker-基本語法備忘/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
+<meta property="og:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，侷限學者方便複習。有需要學習的，完整教材可以查看以下兩個良心連結。  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-24T03:46:57.303Z">
+<meta property="og:updated_time" content="2019-07-24T07:00:19.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 基本語法備忘">
-<meta name="twitter:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
+<meta name="twitter:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，侷限學者方便複習。有需要學習的，完整教材可以查看以下兩個良心連結。  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持">
 
 
 
@@ -320,7 +320,7 @@
 
       
         <blockquote>
-<p>由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結</p>
+<p>由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，侷限學者方便複習。有需要學習的，完整教材可以查看以下兩個良心連結。</p>
 </blockquote>
 <p><a href="https://yeasy.gitbooks.io/docker_practice/content/introduction/" target="_blank" rel="noopener">《Docker 从入门到实践》简体中文版</a></p>
 <p><a href="https://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html" target="_blank" rel="noopener">《Docker 從入門到實踐》正體中文版</a></p>
@@ -349,7 +349,28 @@ docker exec -i  &lt;containersID&gt; bash</code></pre></li>
 docker export &lt;containersID&gt; &gt; ubuntu.tar
 
 #導入
-cat ubuntu.tar | docker import - test/ubuntu:v1.0</code></pre><h4 id="數據管理"><a href="#數據管理" class="headerlink" title="數據管理"></a>數據管理</h4>
+cat ubuntu.tar | docker import - test/ubuntu:v1.0</code></pre><h4 id="數據管理"><a href="#數據管理" class="headerlink" title="數據管理"></a>數據管理</h4><h5 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h5><p>創建一個數據卷</p>
+<pre><code>docker volume create my_vol</code></pre><p>查看指定的數據卷</p>
+<pre><code>docker volume inspect my_vol</code></pre><p>查看容器的具體信息</p>
+<pre><code>docker inspect odoo</code></pre><p>刪除某一個數據卷</p>
+<pre><code>docker volume rm my_vol</code></pre><p>刪除無主的數據卷(好像停止的容器也屬於無主)</p>
+<pre><code>docker volume prune</code></pre><h5 id="挂载主机目录-Bind-mounts"><a href="#挂载主机目录-Bind-mounts" class="headerlink" title="挂载主机目录 (Bind mounts)"></a>挂载主机目录 (Bind mounts)</h5><blockquote>
+<p>比較好用，數據庫更新的頻繁，掛載出來比較方便</p>
+</blockquote>
+<p>使用mount掛在</p>
+<pre><code>docker run -d -P \
+--name web \
+# -v /src/webapp:/opt/webapp \
+--mount type=bind,source=/src/webapp,target=/opt/webapp \
+training/webapp \
+python app.py</code></pre><p>上面的命令：<br>加载主机的 /src/webapp 目录到容器的 /opt/webapp目录。<br>本地目录的路径必须是绝对路径。<br>使用 -v 参数时如果本地目录不存在 Docker 会自动为你创建一个文件夹，使用 –mount 参数时如果本地目录不存在，Docker 会报错。</p>
+<p>掛載的命令默認是 讀寫，如需改為讀，增加readonly：</p>
+<pre><code>docker run -d -P \
+--name web \
+# -v /src/webapp:/opt/webapp:ro \
+--mount type=bind,source=/src/webapp,target=/opt/webapp,readonly \
+training/webapp \
+python app.py</code></pre><h4 id="需要了解的額外知識點"><a href="#需要了解的額外知識點" class="headerlink" title="需要了解的額外知識點"></a>需要了解的額外知識點</h4><h5 id="什麼是Nexus"><a href="#什麼是Nexus" class="headerlink" title="什麼是Nexus"></a>什麼是Nexus</h5>
       
     </div>
     
@@ -499,7 +520,7 @@ cat ubuntu.tar | docker import - test/ubuntu:v1.0</code></pre><h4 id="數據管�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动"><span class="nav-number">1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#進入容器"><span class="nav-number">2.</span> <span class="nav-text">進入容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#導出導入容器"><span class="nav-number">3.</span> <span class="nav-text">導出導入容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#數據管理"><span class="nav-number">4.</span> <span class="nav-text">數據管理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动"><span class="nav-number">1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#進入容器"><span class="nav-number">2.</span> <span class="nav-text">進入容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#導出導入容器"><span class="nav-number">3.</span> <span class="nav-text">導出導入容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#數據管理"><span class="nav-number">4.</span> <span class="nav-text">數據管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据卷（Volumes）"><span class="nav-number">4.1.</span> <span class="nav-text">数据卷（Volumes）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挂载主机目录-Bind-mounts"><span class="nav-number">4.2.</span> <span class="nav-text">挂载主机目录 (Bind mounts)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要了解的額外知識點"><span class="nav-number">5.</span> <span class="nav-text">需要了解的額外知識點</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什麼是Nexus"><span class="nav-number">5.1.</span> <span class="nav-text">什麼是Nexus</span></a></li></ol></li></ol></div>
             
 
           </div>
