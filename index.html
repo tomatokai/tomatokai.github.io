@@ -249,6 +249,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/Docker-基本語法備忘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomatokai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomatokai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/24/Docker-基本語法備忘/" itemprop="url">Docker 基本語法備忘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-24T10:36:00+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結</p>
+</blockquote>
+<p><a href="https://yeasy.gitbooks.io/docker_practice/content/introduction/" target="_blank" rel="noopener">《Docker 从入门到实践》简体中文版</a></p>
+<p><a href="https://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html" target="_blank" rel="noopener">《Docker 從入門到實踐》正體中文版</a></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><pre><code>docker run -t -i -d</code></pre><ul>
+<li>-t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上， </li>
+<li>-i 则让容器的标准输入保持打开。</li>
+<li>-d 表示守護狀態打開</li>
+</ul>
+<h4 id="進入容器"><a href="#進入容器" class="headerlink" title="進入容器"></a>進入容器</h4><ul>
+<li><p>docker attach 命令</p>
+<pre><code>docker attach &lt;containersID&gt;</code></pre></li>
+</ul>
+<ul>
+<li><p>docker exec 命令 (配合 -dit使用)</p>
+</li>
+<li><p>推荐大家使用 docker exec 命令,(attach从这个 stdin 中 exit，会导致容器的停止,exec不會，所以推薦用exec)</p>
+<pre><code>docker run -dit ubuntu
+docker exec -i  &lt;containersID&gt; bash</code></pre></li>
+<li><p>不清楚的時候，多使用docker exec –help查看</p>
+</li>
+</ul>
+<h4 id="導出導入容器"><a href="#導出導入容器" class="headerlink" title="導出導入容器"></a>導出導入容器</h4><blockquote>
+<p>暫時不明白這部分的主要作用是什麼</p>
+</blockquote>
+<pre><code>#導出
+docker export &lt;containersID&gt; &gt; ubuntu.tar
+
+#導入
+cat ubuntu.tar | docker import - test/ubuntu:v1.0</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Centos7-安裝python3-及jupyter-notebook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1581,173 +1730,6 @@ returnValue = objShell.Run(cmd, 0, false) </code></pre><p>再将其放到 startu
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/06/Markdown-入門基礎語法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tomatokai">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomatokai">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/06/Markdown-入門基礎語法/" itemprop="url">Markdown,入門基礎語法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-06T14:16:19+08:00">
-                2019-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>剛學python時，在jupyter notebook裡面看到有markdown，當時還不知道是做什麼用的，現知道主要用於寫筆記和博客，怕忘了些語法細節，因此紀錄。</p>
-</blockquote>
-<h4 id="標題"><a href="#標題" class="headerlink" title="標題"></a>標題</h4><p>用#來區分，總共可分6層</p>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ol>
-<li>有序列表 1.</li>
-</ol>
-<ul>
-<li>無序列表 -</li>
-</ul>
-<ul>
-<li>無序列表 *</li>
-</ul>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
-<p>引用採用 &gt; 學習，是一趟自我愉悅的旅行</p>
-</blockquote>
-<h4 id="連結-圖片連結"><a href="#連結-圖片連結" class="headerlink" title="連結/圖片連結"></a>連結/圖片連結</h4><blockquote>
-<p>插入連結採用 [ ] + ( ) 方括號寫連結名稱，括號寫連結<br>圖片則是 ! +[ ] + ( )</p>
-</blockquote>
-<blockquote>
-<p><a href="https://cn.bing.com/" target="_blank" rel="noopener">必應</a></p>
-</blockquote>
-<h4 id="粗體-採用2個星號包圍文字即可）-斜體（1個星號）"><a href="#粗體-採用2個星號包圍文字即可）-斜體（1個星號）" class="headerlink" title="粗體(採用2個星號包圍文字即可） 斜體（1個星號）"></a><strong>粗體(採用2個星號包圍文字即可）</strong> <em>斜體（1個星號）</em></h4><h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><blockquote>
-<p>講真，能不在mardown做表格就不再這裡做吧，是比較麻煩的，建議其他工具製作好再用</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>所有表格</th>
-<th align="center">B列</th>
-<th align="right">C列</th>
-</tr>
-</thead>
-</table>
-<h4 id="代碼框"><a href="#代碼框" class="headerlink" title="代碼框"></a>代碼框</h4><blockquote>
-<p>用的最多的地方到啦,採用 ` 符號包起代碼</p>
-</blockquote>
-<p><code>#如果是寫一小段代碼</code><br><code>import pandas as pd</code></p>
-<pre><code>#如果是一大段代碼，則用Tap縮進查看，一小段則用`符號標記
-import pandas as pd 
-import numpy as np
-import matplotlib as mpl</code></pre><hr>
-<p>傳說中的分割線，用3個*號即可</p>
-<hr>
-<h4 id="教程链接"><a href="#教程链接" class="headerlink" title="教程链接"></a>教程链接</h4><p>需要更详细的资料：<br><a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown語法說明-完整版</a><br><a href="https://www.appinn.com/markdown/basic.html" target="_blank" rel="noopener">Markdown語法說明-快速入門版</a></p>
-<hr>
-<p>用傳說中的分割線結束本篇筆記<br>——tomatokai</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1798,7 +1780,7 @@ import matplotlib as mpl</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

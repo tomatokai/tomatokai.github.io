@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務">
+<meta name="description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过Docker搭建ngrok实现内网穿透">
-<meta property="og:url" content="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/index.html">
+<meta property="og:title" content="Docker 基本語法備忘">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/Docker-基本語法備忘/index.html">
 <meta property="og:site_name" content="Tomatokai">
-<meta property="og:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務">
+<meta property="og:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-12T09:14:02.641Z">
+<meta property="og:updated_time" content="2019-07-24T03:16:28.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过Docker搭建ngrok实现内网穿透">
-<meta name="twitter:description" content="之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優  可能會用到的centos輔助命令端口命令連結 #查看80端口狀況 lsof -i tcp:80 #列出所有端口 netstat -ntlp採用Docker + ngrok 前面的域名設置是一樣的,可以參考上一篇centos7 搭建自己的ngrok服務">
+<meta name="twitter:title" content="Docker 基本語法備忘">
+<meta name="twitter:description" content="由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結  《Docker 从入门到实践》简体中文版 《Docker 從入門到實踐》正體中文版 启动docker run -t -i -d -t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i 则让容器的标准输入保持打开。 -d 表示守">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/24/Docker-基本語法備忘/">
 
 
 
 
 
-  <title>通过Docker搭建ngrok实现内网穿透 | Tomatokai</title>
+  <title>Docker 基本語法備忘 | Tomatokai</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/通过Docker搭建ngrok实现内网穿透/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/Docker-基本語法備忘/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tomatokai">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">通过Docker搭建ngrok实现内网穿透</h1>
+          <h1 class="post-title" itemprop="name headline">Docker 基本語法備忘</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T10:16:08+08:00">
-                2019-07-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-24T10:36:00+08:00">
+                2019-07-24
               </time>
             
 
@@ -320,84 +320,36 @@
 
       
         <blockquote>
-<p>之前直接使用centos7搭建了ngrok,可以順利穿透內網,但是聽先進說這樣會佔用了端口,所以採用docker+ngrok的方式更加的優</p>
+<p>由於初學docker，個人學習習慣是在實踐中了解每個指令的作用，因此作此備忘錄，以方便複習。有完整教材可以查看以下兩個良心連結</p>
 </blockquote>
-<h4 id="可能會用到的centos輔助命令"><a href="#可能會用到的centos輔助命令" class="headerlink" title="可能會用到的centos輔助命令"></a>可能會用到的centos輔助命令</h4><p><a href="https://www.centos.bz/2018/03/centos%e6%9f%a5%e7%9c%8b%e7%ab%af%e5%8f%a3%e5%8d%a0%e7%94%a8%e6%83%85%e5%86%b5%e5%92%8c%e5%bc%80%e5%90%af%e7%ab%af%e5%8f%a3%e5%91%bd%e4%bb%a4/" target="_blank" rel="noopener">端口命令連結</a></p>
-<pre><code>#查看80端口狀況
-lsof -i tcp:80
-#列出所有端口
-netstat -ntlp</code></pre><h3 id="採用Docker-ngrok"><a href="#採用Docker-ngrok" class="headerlink" title="採用Docker + ngrok"></a>採用Docker + ngrok</h3><blockquote>
-<p>前面的域名設置是一樣的,可以參考上一篇<a href="https://tomatokai.github.io/2019/06/28/centos7-%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ngrok%E6%9C%8D%E5%8B%99/" target="_blank" rel="noopener">centos7 搭建自己的ngrok服務</a></p>
+<p><a href="https://yeasy.gitbooks.io/docker_practice/content/introduction/" target="_blank" rel="noopener">《Docker 从入门到实践》简体中文版</a></p>
+<p><a href="https://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html" target="_blank" rel="noopener">《Docker 從入門到實踐》正體中文版</a></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><pre><code>docker run -t -i -d</code></pre><ul>
+<li>-t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上， </li>
+<li>-i 则让容器的标准输入保持打开。</li>
+<li>-d 表示守護狀態打開</li>
+</ul>
+<h4 id="進入容器"><a href="#進入容器" class="headerlink" title="進入容器"></a>進入容器</h4><ul>
+<li><p>docker attach 命令</p>
+<pre><code>docker attach &lt;containersID&gt;</code></pre></li>
+</ul>
+<ul>
+<li><p>docker exec 命令 (配合 -dit使用)</p>
+</li>
+<li><p>推荐大家使用 docker exec 命令,(attach从这个 stdin 中 exit，会导致容器的停止,exec不會，所以推薦用exec)</p>
+<pre><code>docker run -dit ubuntu
+docker exec -i  &lt;containersID&gt; bash</code></pre></li>
+<li><p>不清楚的時候，多使用docker exec –help查看</p>
+</li>
+</ul>
+<h4 id="導出導入容器"><a href="#導出導入容器" class="headerlink" title="導出導入容器"></a>導出導入容器</h4><blockquote>
+<p>暫時不明白這部分的主要作用是什麼</p>
 </blockquote>
-<blockquote>
-<p>由於之前的go版本問題，導致做出來的客戶端無法在linux運行（mac和windows都沒有問題）,此時需要做如下修改後，再啟動容器</p>
-</blockquote>
-<pre><code>git clone https://github.com/hteen/docker-ngrok.git
-cd docker-ngrok
-sed -i &apos;1cFROM golang:1.8.3&apos; Dockerfile
-sed -i &apos;4cRUN apt-get install git make openssl&apos;     Dockerfile
-docker build -t hteen/ngrok .</code></pre><h4 id="創建docker-ngrok容器"><a href="#創建docker-ngrok容器" class="headerlink" title="創建docker ngrok容器"></a>創建docker ngrok容器</h4><pre><code>docker run -idt \
---restart always \
---name ngrok-server \
--p 8880:80 \
--p 8443:443 \
--p 4443:4443 \
--v /data/ngrok:/myfiles \
--e DOMAIN=&apos;nb.coodata.cn&apos; \
-hteen/ngrok /bin/sh /server.sh</code></pre><p>備註:記得把nb.coodata.cn改為自己的域名</p>
-<blockquote>
-<p>第一次創建的時候直接可以運行，第二次則出現問題（exit status 1）通過以下代碼解決</p>
-</blockquote>
-<pre><code>pkill docker                 #终止进程
-iptables -t nat -F           #清空nat表的所有链
-ifconfig docker0 down        #停止docker默认网桥  
-systemctl restart docker     #重启docker</code></pre><h4 id="添加反向代理"><a href="#添加反向代理" class="headerlink" title="添加反向代理"></a>添加反向代理</h4><p>主要是因為80,443端口通常佔用了</p>
-<h5 id="搭建nginx反向代理服务器"><a href="#搭建nginx反向代理服务器" class="headerlink" title="搭建nginx反向代理服务器"></a>搭建nginx反向代理服务器</h5><h6 id="通过docker-compose搭建"><a href="#通过docker-compose搭建" class="headerlink" title="通过docker-compose搭建"></a>通过docker-compose搭建</h6><p>vi proxy-nginx.yml</p>
-<pre><code>nginx:
-image: nginx:latest
-container_name: proxy-nginx
-restart: always
-ports: 
-- 80:80
-volumes:
-    - ~/nginx/www:/usr/share/nginx/html
-    - ~/nginx/conf.d:/etc/nginx/conf.d</code></pre><p>docker-compose -f proxy-nginx.yml up -d</p>
-<h6 id="创建默认配置"><a href="#创建默认配置" class="headerlink" title="创建默认配置"></a>创建默认配置</h6><p>vi ~/nginx/conf.d/default.conf</p>
-<pre><code>server {
-    listen       80;
-    server_name  localhost;
+<pre><code>#導出
+docker export &lt;containersID&gt; &gt; ubuntu.tar
 
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-    }
-}</code></pre><h5 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h5><p>vi ~/nginx/conf.d/ngrok-proxy.conf</p>
-<pre><code>server {
-listen 80;
-server_name nb.coodata.cn *.nb.coodata.cn;
-location / {
-    proxy_redirect off;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_pass http://193.112.101.53:8880;      #代理的ip+端口
-  }
-}
-server {
-listen 443;
-server_name nb.coodata.cn *.nb.coodata.cn;
-location / {
-    proxy_redirect off;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_pass http://193.112.101.53:8443;      #代理的ip+端口
-}
-}</code></pre><h4 id="下載客戶端"><a href="#下載客戶端" class="headerlink" title="下載客戶端"></a>下載客戶端</h4><p>和之前的方法一樣,mac的是用/data/ngrok/bin/darwin_amd64/ngrok這個</p>
-<h5 id="添加可執行權限-並創建cfg文件"><a href="#添加可執行權限-並創建cfg文件" class="headerlink" title="添加可執行權限,並創建cfg文件"></a>添加可執行權限,並創建cfg文件</h5><pre><code>chmod +x ngrok</code></pre><p><a href="https://hbson.cn/2018/08/12/Docker_Ngrok_tunnel/" target="_blank" rel="noopener">文獻1:Docker+Ngrok+Nginx实现内网穿透
-</a><br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">文獻2:Docker 部署Nginx反向代理服务器
-</a><br><a href="https://hbson.cn/2018/08/10/Docker_Nginx_Reverse%20proxy/#more" target="_blank" rel="noopener">文献3:查看nginx反向代理服务器如何搭建</a></p>
-
+#導入
+cat ubuntu.tar | docker import - test/ubuntu:v1.0</code></pre>
       
     </div>
     
@@ -421,8 +373,8 @@ location / {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/28/centos7-搭建自己的ngrok服務/" rel="next" title="centos7 搭建自己的ngrok服務">
-                <i class="fa fa-chevron-left"></i> centos7 搭建自己的ngrok服務
+              <a href="/2019/07/18/Centos7-安裝python3-及jupyter-notebook/" rel="next" title="Centos7 安裝python3 及jupyter notebook">
+                <i class="fa fa-chevron-left"></i> Centos7 安裝python3 及jupyter notebook
               </a>
             
           </div>
@@ -430,10 +382,6 @@ location / {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/03/Win10下完美運行docker/" rel="prev" title="Win10下完美運行docker">
-                Win10下完美運行docker <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +495,7 @@ location / {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可能會用到的centos輔助命令"><span class="nav-number">1.</span> <span class="nav-text">可能會用到的centos輔助命令</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#採用Docker-ngrok"><span class="nav-number"></span> <span class="nav-text">採用Docker + ngrok</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#創建docker-ngrok容器"><span class="nav-number">1.</span> <span class="nav-text">創建docker ngrok容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加反向代理"><span class="nav-number">2.</span> <span class="nav-text">添加反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#搭建nginx反向代理服务器"><span class="nav-number">2.1.</span> <span class="nav-text">搭建nginx反向代理服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通过docker-compose搭建"><span class="nav-number">2.1.1.</span> <span class="nav-text">通过docker-compose搭建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建默认配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建默认配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下載客戶端"><span class="nav-number">3.</span> <span class="nav-text">下載客戶端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加可執行權限-並創建cfg文件"><span class="nav-number">3.1.</span> <span class="nav-text">添加可執行權限,並創建cfg文件</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动"><span class="nav-number">1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#進入容器"><span class="nav-number">2.</span> <span class="nav-text">進入容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#導出導入容器"><span class="nav-number">3.</span> <span class="nav-text">導出導入容器</span></a></li></ol></div>
             
 
           </div>
