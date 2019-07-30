@@ -362,6 +362,10 @@ git commit -a -m &quot;修改了hello.py“</code></pre><h4 id="注册Github账�
 <h4 id="本機與Github遠程連結"><a href="#本機與Github遠程連結" class="headerlink" title="本機與Github遠程連結"></a>本機與Github遠程連結</h4><p>在github新建一個repository後，會得到一個https的連結，複製此連結，然後執行指令:</p>
 <pre><code>#cd 到對應的檔案庫（文件夾）
 git remote add origin &lt;remote 網址&gt;
+#幫一個remote設定地址
+git remote set-url &lt;remote 網址&gt;
+#查看有哪些remote連結
+git remote -V
 
 #檢查後，把本地檔案push到遠程github
 git status
