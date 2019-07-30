@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="之前學python的時候，了解到git是非常重要的基礎，學會git可以讓編程工作變得更加順暢和大大的提高了團隊協作。在此通過學習基本的指令後，再讀幾遍系統文檔，應該會對今後的工作大有幫助。  感謝先進們的奉獻，在此放上連結方便學習。《Git 與 Github 版本控制基本指令》《30天精通Git版本控管》《Git官方網站》《Git-it 台灣》手把手入門《Git 中文手冊》 基礎入門安裝Git(">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-07-30T06:42:26.622Z">
+<meta property="og:updated_time" content="2019-07-30T07:47:02.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git與Github的基本指令">
 <meta name="twitter:description" content="之前學python的時候，了解到git是非常重要的基礎，學會git可以讓編程工作變得更加順暢和大大的提高了團隊協作。在此通過學習基本的指令後，再讀幾遍系統文檔，應該會對今後的工作大有幫助。  感謝先進們的奉獻，在此放上連結方便學習。《Git 與 Github 版本控制基本指令》《30天精通Git版本控管》《Git官方網站》《Git-it 台灣》手把手入門《Git 中文手冊》 基礎入門安裝Git(">
@@ -369,7 +369,13 @@ git remote -V
 #檢查後，把本地檔案push到遠程github
 git status
 git push -u origin master</code></pre><p>參數 -u 等於 –set-upstream,設定upstream可以使分支開始追蹤遠程分支，只需要做一次該指令，並push成功後，今後就會自動追蹤，只需要透過git push即可</p>
-<h4 id="Fork-和-clone一個open-source（開源）計畫"><a href="#Fork-和-clone一個open-source（開源）計畫" class="headerlink" title="Fork 和 clone一個open source（開源）計畫"></a>Fork 和 clone一個open source（開源）計畫</h4><h4 id="建立一個feature-branch"><a href="#建立一個feature-branch" class="headerlink" title="建立一個feature branch"></a>建立一個feature branch</h4><pre><code>#建立一個名為dev的branch(需要cd到文件夾)
+<h4 id="Fork-和-clone一個open-source（開源）計畫"><a href="#Fork-和-clone一個open-source（開源）計畫" class="headerlink" title="Fork 和 clone一個open source（開源）計畫"></a>Fork 和 clone一個open source（開源）計畫</h4><p>git clone 了文件後，進入建立一個屬於自己的分支（branch)</p>
+<pre><code>cd react
+#切出自己的新分支
+git checkout -b tomatokai@feature_branch
+#修改下README.md，然後commit到自己fork的專案
+git commit -a -m &quot;更新了README&quot;
+git push origin origin tomatokai@feature_branch</code></pre><h4 id="建立一個feature-branch"><a href="#建立一個feature-branch" class="headerlink" title="建立一個feature branch"></a>建立一個feature branch</h4><pre><code>#建立一個名為dev的branch(需要cd到文件夾)
 git checkout -b dev
 #修改hello.py的內容後提交
 git commit -a -m &quot;Init dev branch&quot;
