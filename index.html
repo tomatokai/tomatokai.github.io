@@ -366,7 +366,20 @@ git remote add origin &lt;remote 網址&gt;
 #檢查後，把本地檔案push到遠程github
 git status
 git push -u origin master</code></pre><p>參數 -u 等於 –set-upstream,設定upstream可以使分支開始追蹤遠程分支，只需要做一次該指令，並push成功後，今後就會自動追蹤，只需要透過git push即可</p>
-<h4 id="Fork-和-clone一個open-source（開源）計畫"><a href="#Fork-和-clone一個open-source（開源）計畫" class="headerlink" title="Fork 和 clone一個open source（開源）計畫"></a>Fork 和 clone一個open source（開源）計畫</h4>
+<h4 id="Fork-和-clone一個open-source（開源）計畫"><a href="#Fork-和-clone一個open-source（開源）計畫" class="headerlink" title="Fork 和 clone一個open source（開源）計畫"></a>Fork 和 clone一個open source（開源）計畫</h4><h4 id="建立一個feature-branch"><a href="#建立一個feature-branch" class="headerlink" title="建立一個feature branch"></a>建立一個feature branch</h4><pre><code>#建立一個名為dev的branch(需要cd到文件夾)
+git checkout -b dev
+#修改hello.py的內容後提交
+git commit -a -m &quot;Init dev branch&quot;
+git push origin dev</code></pre><h4 id="邀請別人合作"><a href="#邀請別人合作" class="headerlink" title="邀請別人合作"></a>邀請別人合作</h4><p>在github中——setting——collaborators中設置邀請</p>
+<h4 id="利用push和pull來和Github-com同步"><a href="#利用push和pull來和Github-com同步" class="headerlink" title="利用push和pull來和Github.com同步"></a>利用push和pull來和Github.com同步</h4><pre><code>#通過git pull保持本地和遠程代碼同步
+git pull origin dev</code></pre><h4 id="merge-合併）和刪除branches"><a href="#merge-合併）和刪除branches" class="headerlink" title="merge(合併）和刪除branches"></a>merge(合併）和刪除branches</h4><pre><code>#移動到 master branch
+git checout master
+#合併dev到master
+git merge dev
+#刪除dev branch
+git branch -d dev
+#將合併後的master推送到遠端
+git push origin master</code></pre>
           
         
       
