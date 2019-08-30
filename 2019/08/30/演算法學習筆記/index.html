@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="由於缺乏對演算法和資料結構的知識，因此即便會用程序解決一些事情，但是對比專業的人員還是相差很大。如果可以了解演算法和熟悉運用資料結構，那麼對於後續的編寫程式會有很大的提升，因此即便是自學，也可以不落下這一塊的內容  演算法的簡單概念輸入 + 演算法 = 輸出設計演算法需要很嚴格的定義，但是對於演算法本身的定義卻是比較含糊的，對於入門的我來說，知道上面一個簡單的公式即可。 如何衡量演算法的好壞 時">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-08-30T03:09:33.149Z">
+<meta property="og:updated_time" content="2019-08-30T03:20:39.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="演算法學習筆記">
 <meta name="twitter:description" content="由於缺乏對演算法和資料結構的知識，因此即便會用程序解決一些事情，但是對比專業的人員還是相差很大。如果可以了解演算法和熟悉運用資料結構，那麼對於後續的編寫程式會有很大的提升，因此即便是自學，也可以不落下這一塊的內容  演算法的簡單概念輸入 + 演算法 = 輸出設計演算法需要很嚴格的定義，但是對於演算法本身的定義卻是比較含糊的，對於入門的我來說，知道上面一個簡單的公式即可。 如何衡量演算法的好壞 時">
@@ -328,9 +328,8 @@
 <li>記憶體緯度（空間/內存）<br>由於現在cpu比記憶體珍貴很多，因此我們優先考慮時間緯度。</li>
 </ul>
 <p>好的演算法 = 步驟少 + 空間佔用少</p>
-<p>演算法的時間緯度符號很多，但目前用的多的是大O，所以入門暫時就把心思花在這裏吧。</p>
-<h4 id="常見的六種時間複雜度與演算法"><a href="#常見的六種時間複雜度與演算法" class="headerlink" title="常見的六種時間複雜度與演算法"></a>常見的六種時間複雜度與演算法</h4><p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E5%BE%9E%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E8%AA%8D%E8%AD%98%E5%B8%B8%E8%A6%8B%E6%BC%94%E7%AE%97%E6%B3%95-%E4%B8%80-b46fece65ba5" target="_blank" rel="noopener">胡程維《從時間複雜度認識常見的演算法》</a></p>
-<ul>
+<p>演算法的時間緯度符號很多，但目前用的多的是大O，所以入門暫時就把心思花在這裏吧。<br>另外執行的情況都是在最糟糕的情況下來算n。</p>
+<h4 id="常見的六種時間複雜度與演算法"><a href="#常見的六種時間複雜度與演算法" class="headerlink" title="常見的六種時間複雜度與演算法"></a>常見的六種時間複雜度與演算法</h4><ul>
 <li>O(1):陣列讀取（list讀取）</li>
 <li>O(n):簡易搜索</li>
 <li>O(log n ):二分搜索</li>
@@ -338,6 +337,8 @@
 <li>O(n^2):選擇排序/插入排序</li>
 <li>O(2^n):斐波那契數列</li>
 </ul>
+<h4 id="先進們的貢獻"><a href="#先進們的貢獻" class="headerlink" title="先進們的貢獻"></a>先進們的貢獻</h4><p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E8%AB%87%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BC%94%E7%AE%97%E6%B3%95%E5%92%8C%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-b1f6908e4b80" target="_blank" rel="noopener">胡程維《談什麼是演算法和時間複雜度》</a></p>
+<p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E5%BE%9E%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E8%AA%8D%E8%AD%98%E5%B8%B8%E8%A6%8B%E6%BC%94%E7%AE%97%E6%B3%95-%E4%B8%80-b46fece65ba5" target="_blank" rel="noopener">胡程維《從時間複雜度認識常見的演算法》</a></p>
 
       
     </div>
@@ -484,7 +485,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#演算法的簡單概念"><span class="nav-number">1.</span> <span class="nav-text">演算法的簡單概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何衡量演算法的好壞"><span class="nav-number">2.</span> <span class="nav-text">如何衡量演算法的好壞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常見的六種時間複雜度與演算法"><span class="nav-number">3.</span> <span class="nav-text">常見的六種時間複雜度與演算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#演算法的簡單概念"><span class="nav-number">1.</span> <span class="nav-text">演算法的簡單概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何衡量演算法的好壞"><span class="nav-number">2.</span> <span class="nav-text">如何衡量演算法的好壞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常見的六種時間複雜度與演算法"><span class="nav-number">3.</span> <span class="nav-text">常見的六種時間複雜度與演算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先進們的貢獻"><span class="nav-number">4.</span> <span class="nav-text">先進們的貢獻</span></a></li></ol></div>
             
 
           </div>
