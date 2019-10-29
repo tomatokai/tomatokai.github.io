@@ -338,6 +338,13 @@
 <li>O(n^2):選擇排序/插入排序</li>
 <li>O(2^n):斐波那契數列</li>
 </ul>
+<h4 id="資料結構基礎知識"><a href="#資料結構基礎知識" class="headerlink" title="資料結構基礎知識"></a>資料結構基礎知識</h4><blockquote>
+<p>摘自《我的第一本算法書》，用於回憶學習用</p>
+</blockquote>
+<h5 id="鏈表"><a href="#鏈表" class="headerlink" title="鏈表"></a>鏈表</h5><p>優點:增加和刪除快（只需時間O(1)),只需要改變指針即可<br>缺點:訪問慢（時間緯度O(n))<br>種類:單向鏈表，雙向鏈表，環形鏈表<br>特點:分散存儲於內存中，訪問則需要按照順序訪問。</p>
+<h5 id="數組"><a href="#數組" class="headerlink" title="數組"></a>數組</h5><p>優點:訪問快(O(1)),直接通過下標訪問如:array[1]<br>缺點:創建和刪除慢(O(n))</p>
+<h5 id="棧"><a href="#棧" class="headerlink" title="棧"></a>棧</h5><p>特點:後進先出(LIFO),只能操作一端的數據，如若需要訪問其他層，需要調換順序,在只需要訪問最新數據時，使用棧就比較方便了.<br>入棧（push），出棧（pop）<br>舉例:規定(AB(C(DE)F)(G((H)IJ)K))這一串字符中括號的處理方式如下：<br>首先從左邊開始讀取字符，讀到左括號就將其入棧，讀到右邊括號就將棧頂的左括號出棧。此時，出棧的左括號便於當前讀取的右括號相匹配。<br>通過這種方式，我們就能得知配對括號的具體位置。<br>ps：在深度優先搜索算法中，通常會選擇最新的數據作為候補頂點。在候補頂點的管理上就可以使用棧.</p>
+<h5 id="隊列"><a href="#隊列" class="headerlink" title="隊列"></a>隊列</h5><p>特點:先進先出(FIFO),添加和刪除操作可以在兩端，添加操作(入隊),刪除操作(出隊)<br>ps:廣度優先搜索法中，通常就會從搜索候補中選擇最早的數據作為下一個頂點。此時，在候補頂點的管理上就可以使用隊列了。</p>
 <h4 id="先進們的貢獻"><a href="#先進們的貢獻" class="headerlink" title="先進們的貢獻"></a>先進們的貢獻</h4><p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E8%AB%87%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BC%94%E7%AE%97%E6%B3%95%E5%92%8C%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-b1f6908e4b80" target="_blank" rel="noopener">胡程維《談什麼是演算法和時間複雜度》</a></p>
 <p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E5%BE%9E%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E8%AA%8D%E8%AD%98%E5%B8%B8%E8%A6%8B%E6%BC%94%E7%AE%97%E6%B3%95-%E4%B8%80-b46fece65ba5" target="_blank" rel="noopener">胡程維《從時間複雜度認識常見的演算法》</a></p>
 

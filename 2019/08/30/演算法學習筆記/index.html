@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tomatokai">
 <meta property="og:description" content="由於缺乏對演算法和資料結構的知識，因此即便會用程序解決一些事情，但是對比專業的人員還是相差很大。如果可以了解演算法和熟悉運用資料結構，那麼對於後續的編寫程式會有很大的提升，因此即便是自學，也可以不落下這一塊的內容  演算法的簡單概念輸入 + 演算法 = 輸出設計演算法需要很嚴格的定義，但是對於演算法本身的定義卻是比較含糊的，對於入門的我來說，知道上面一個簡單的公式即可。 如何衡量演算法的好壞 時">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2019-08-30T03:20:39.548Z">
+<meta property="og:updated_time" content="2019-10-29T03:41:11.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="演算法學習筆記">
 <meta name="twitter:description" content="由於缺乏對演算法和資料結構的知識，因此即便會用程序解決一些事情，但是對比專業的人員還是相差很大。如果可以了解演算法和熟悉運用資料結構，那麼對於後續的編寫程式會有很大的提升，因此即便是自學，也可以不落下這一塊的內容  演算法的簡單概念輸入 + 演算法 = 輸出設計演算法需要很嚴格的定義，但是對於演算法本身的定義卻是比較含糊的，對於入門的我來說，知道上面一個簡單的公式即可。 如何衡量演算法的好壞 時">
@@ -337,6 +337,13 @@
 <li>O(n^2):選擇排序/插入排序</li>
 <li>O(2^n):斐波那契數列</li>
 </ul>
+<h4 id="資料結構基礎知識"><a href="#資料結構基礎知識" class="headerlink" title="資料結構基礎知識"></a>資料結構基礎知識</h4><blockquote>
+<p>摘自《我的第一本算法書》，用於回憶學習用</p>
+</blockquote>
+<h5 id="鏈表"><a href="#鏈表" class="headerlink" title="鏈表"></a>鏈表</h5><p>優點:增加和刪除快（只需時間O(1)),只需要改變指針即可<br>缺點:訪問慢（時間緯度O(n))<br>種類:單向鏈表，雙向鏈表，環形鏈表<br>特點:分散存儲於內存中，訪問則需要按照順序訪問。</p>
+<h5 id="數組"><a href="#數組" class="headerlink" title="數組"></a>數組</h5><p>優點:訪問快(O(1)),直接通過下標訪問如:array[1]<br>缺點:創建和刪除慢(O(n))</p>
+<h5 id="棧"><a href="#棧" class="headerlink" title="棧"></a>棧</h5><p>特點:後進先出(LIFO),只能操作一端的數據，如若需要訪問其他層，需要調換順序,在只需要訪問最新數據時，使用棧就比較方便了.<br>入棧（push），出棧（pop）<br>舉例:規定(AB(C(DE)F)(G((H)IJ)K))這一串字符中括號的處理方式如下：<br>首先從左邊開始讀取字符，讀到左括號就將其入棧，讀到右邊括號就將棧頂的左括號出棧。此時，出棧的左括號便於當前讀取的右括號相匹配。<br>通過這種方式，我們就能得知配對括號的具體位置。<br>ps：在深度優先搜索算法中，通常會選擇最新的數據作為候補頂點。在候補頂點的管理上就可以使用棧.</p>
+<h5 id="隊列"><a href="#隊列" class="headerlink" title="隊列"></a>隊列</h5><p>特點:先進先出(FIFO),添加和刪除操作可以在兩端，添加操作(入隊),刪除操作(出隊)<br>ps:廣度優先搜索法中，通常就會從搜索候補中選擇最早的數據作為下一個頂點。此時，在候補頂點的管理上就可以使用隊列了。</p>
 <h4 id="先進們的貢獻"><a href="#先進們的貢獻" class="headerlink" title="先進們的貢獻"></a>先進們的貢獻</h4><p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E8%AB%87%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BC%94%E7%AE%97%E6%B3%95%E5%92%8C%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-b1f6908e4b80" target="_blank" rel="noopener">胡程維《談什麼是演算法和時間複雜度》</a></p>
 <p><a href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E5%BE%9E%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E8%AA%8D%E8%AD%98%E5%B8%B8%E8%A6%8B%E6%BC%94%E7%AE%97%E6%B3%95-%E4%B8%80-b46fece65ba5" target="_blank" rel="noopener">胡程維《從時間複雜度認識常見的演算法》</a></p>
 
@@ -485,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#演算法的簡單概念"><span class="nav-number">1.</span> <span class="nav-text">演算法的簡單概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何衡量演算法的好壞"><span class="nav-number">2.</span> <span class="nav-text">如何衡量演算法的好壞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常見的六種時間複雜度與演算法"><span class="nav-number">3.</span> <span class="nav-text">常見的六種時間複雜度與演算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先進們的貢獻"><span class="nav-number">4.</span> <span class="nav-text">先進們的貢獻</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#演算法的簡單概念"><span class="nav-number">1.</span> <span class="nav-text">演算法的簡單概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何衡量演算法的好壞"><span class="nav-number">2.</span> <span class="nav-text">如何衡量演算法的好壞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常見的六種時間複雜度與演算法"><span class="nav-number">3.</span> <span class="nav-text">常見的六種時間複雜度與演算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#資料結構基礎知識"><span class="nav-number">4.</span> <span class="nav-text">資料結構基礎知識</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#鏈表"><span class="nav-number">4.1.</span> <span class="nav-text">鏈表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#數組"><span class="nav-number">4.2.</span> <span class="nav-text">數組</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#棧"><span class="nav-number">4.3.</span> <span class="nav-text">棧</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#隊列"><span class="nav-number">4.4.</span> <span class="nav-text">隊列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先進們的貢獻"><span class="nav-number">5.</span> <span class="nav-text">先進們的貢獻</span></a></li></ol></div>
             
 
           </div>
